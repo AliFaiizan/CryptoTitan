@@ -1,26 +1,76 @@
-import { StyleSheet, Text, View } from 'react-native'
+
 import React from 'react'
-import { LinearGradient } from 'expo-linear-gradient';
+
+import {Box,Text,Input,Stack,Icon} from 'native-base';
+import {MaterialIcons} from '@expo/vector-icons'
+
+
+
+ const [show, setShow] = React.useState(false);
+
 
 
 const AuthScreen = () => {
   return (
-    <LinearGradient
-      colors={["#212931", "#31453e"]}
-      style={styles.gradient}
-      start={{ x: 0.5, y: 0.8 }}
-      end={{ x: 0.5, y: 1 }}
+    <Box
+      shadow={10}
+      bg={{
+        linearGradient: {
+          colors: ["#212931", "#31453e"],
+          start: [0.5, 0.8],
+          end: [0.5, 1],
+        },
+      }}
+      p={4}
+      flex={1}
     >
-      <View>
-        <Text>AuthScreen</Text>
-      </View>
-    </LinearGradient>
+      <Text fontWeight={"bold"} fontSize={20} textAlign="center">
+        Login
+      </Text>
+
+      <Stack space={4} w="100%" alignItems="center">
+        <Input
+          w={{
+            base: "75%",
+            md: "25%",
+          }}
+          InputLeftElement={
+            <Icon
+              as={<MaterialIcons name="person" />}
+              size={5}
+              ml="2"
+              color="muted.400"
+            />
+          }
+          placeholder="Name"
+        />
+        <Input
+          w={{
+            base: "75%",
+            md: "25%",
+          }}
+          type={show ? "text" : "password"}
+          InputRightElement={
+            <Icon
+              as={
+                <MaterialIcons name={show ? "visibility" : "visibility-off"} />
+              }
+              size={5}
+              mr="2"
+              color="muted.400"
+              onPress={() => setShow(!show)}
+            />
+          }
+          placeholder="Password"
+        />
+      </Stack>
+    </Box>
   );
 }
 
 export default AuthScreen
 
-export const ScreenOptions=()=>{
+export const ScreenOptions:any=()=>{
     return {
       headerTitle:'',
       headerTitleStyle: {
@@ -30,11 +80,3 @@ export const ScreenOptions=()=>{
     };
 }
 
-const styles = StyleSheet.create({
-  gradient: {
-    flex: 1,
-    paddingTop: 20,
-    justifyContent: "flex-start",
-    alignItems: "center",
-  },
-});

@@ -1,11 +1,8 @@
 import React from "react";
 
 import { Platform } from "react-native";
-import { Color } from "../constants/Colors";
 
 //Version 5 migraiton
-
-
 
 //import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
