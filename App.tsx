@@ -3,23 +3,23 @@ import { NativeBaseProvider,extendTheme } from "native-base";
 import AppNavigator from "./navigation/AppNavigator";
 import { LinearGradient } from 'expo-linear-gradient';
 
-const config = {
+const themeconfig = {
   colors: {
     // Add new color
     primary: {
       900: "#212931",
     },
     // Redefinig only one shade, rest of the color will remain same.
-    amber: {
-      400: "#d97706",
+    accent: {
+      700:'#1B232A',
+      900:"#161C22",
     },
   },
   useSystemColorMode: false,
   initialColorMode: "dark",
-
 };
 
-const customTheme = extendTheme({ config });
+const customTheme = extendTheme({ themeconfig });
 
 const nBConfig = {
   dependencies: {

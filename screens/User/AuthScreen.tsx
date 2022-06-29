@@ -6,11 +6,12 @@ import {MaterialIcons} from '@expo/vector-icons'
 
 
 
- const [show, setShow] = React.useState(false);
+
 
 
 
 const AuthScreen = () => {
+   const [show, setShow] = React.useState(false);
   return (
     <Box
       shadow={10}
@@ -24,9 +25,9 @@ const AuthScreen = () => {
       p={4}
       flex={1}
     >
-      <Text fontWeight={"bold"} fontSize={20} textAlign="center">
-        Login
-      </Text>
+     <Box>
+      
+     </Box>
 
       <Stack space={4} w="100%" alignItems="center">
         <Input
