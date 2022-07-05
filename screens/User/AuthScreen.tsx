@@ -2,7 +2,8 @@
 import React from 'react'
 
 import {Box,Text,Input,Stack,Icon} from 'native-base';
-import {MaterialIcons} from '@expo/vector-icons'
+import {MaterialIcons} from '@expo/vector-icons';
+import { Color } from '../../constants/Colors';
 
 
 
@@ -25,11 +26,10 @@ const AuthScreen = () => {
       p={4}
       flex={1}
     >
-     <Box>
-      
-     </Box>
+    
 
       <Stack space={4} w="100%" alignItems="center">
+        <AuthSelector />
         <Input
           w={{
             base: "75%",
@@ -69,7 +69,7 @@ const AuthScreen = () => {
   );
 }
 
-export default AuthScreen
+export default AuthScreen;
 
 export const ScreenOptions:any=()=>{
     return {
@@ -81,3 +81,47 @@ export const ScreenOptions:any=()=>{
     };
 }
 
+const AuthSelector=() => { 
+  return (
+    <Box
+      backgroundColor={Color.Secondary}
+      w={{
+        base: "75%",
+        md: "25%",
+      }}
+      h={{
+        base: "17%",
+        md: "15%",
+      }}
+      borderRadius={10}
+    >
+      <Box
+        flexDir={"row"}
+        justifyContent="space-around"
+        alignItems={"center"}
+        flex={1}
+      >
+        <Box
+          backgroundColor={Color.Primary}
+          p={1}
+          borderRadius={10}
+          paddingX={10}
+        >
+          <Text fontWeight={"bold"} color={"gray.300"}>
+            Login
+          </Text>
+        </Box>
+        <Box
+          backgroundColor={Color.Primary}
+          p={1}
+          borderRadius={10}
+          paddingX={10}
+        >
+          <Text fontWeight={"bold"} color={"gray.300"}>
+            Signup
+          </Text>
+        </Box>
+      </Box>
+    </Box>
+  );
+}
