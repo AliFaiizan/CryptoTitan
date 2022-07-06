@@ -13,6 +13,7 @@ import { Color } from '../../constants/Colors';
 
 const AuthScreen = () => {
    const [show, setShow] = React.useState(false);
+   const [category, setCategory] = React.useState('Login');
   return (
     <Box
       shadow={10}
@@ -29,7 +30,7 @@ const AuthScreen = () => {
     
 
       <Stack space={4} w="100%" alignItems="center">
-        <AuthSelector />
+        <AuthSelector category={category}/>
         <Input
           w={{
             base: "75%",
@@ -81,7 +82,7 @@ export const ScreenOptions:any=()=>{
     };
 }
 
-const AuthSelector=() => { 
+const AuthSelector=({category}:any) => { 
   return (
     <Box
       backgroundColor={Color.Secondary}
@@ -107,7 +108,10 @@ const AuthSelector=() => {
           borderRadius={10}
           paddingX={10}
         >
-          <Text fontWeight={"bold"} color={"gray.300"}>
+          <Text
+            fontWeight={"bold"}
+            color={category === "Login" ? "gray.300" : "white"}
+          >
             Login
           </Text>
         </Box>
@@ -117,7 +121,10 @@ const AuthSelector=() => {
           borderRadius={10}
           paddingX={10}
         >
-          <Text fontWeight={"bold"} color={"gray.300"}>
+          <Text
+            fontWeight={"bold"}
+            color={category === "Signup" ? "gray.300" : "white"}
+          >
             Signup
           </Text>
         </Box>
