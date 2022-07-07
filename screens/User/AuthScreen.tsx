@@ -13,6 +13,8 @@ import { Color } from '../../constants/Colors';
 
 const AuthScreen = () => {
    const [show, setShow] = React.useState(false);
+
+   //used to determine if login or signup
    const [category, setCategory] = React.useState('Login');
   return (
     <Box
