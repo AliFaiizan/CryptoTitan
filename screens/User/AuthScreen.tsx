@@ -1,7 +1,7 @@
 
 import React from 'react'
 
-import {Box,Text,Input,Stack,Icon} from 'native-base';
+import {Box,Text,Input,Stack,Icon, Pressable} from 'native-base';
 import {MaterialIcons} from '@expo/vector-icons';
 import { Color } from '../../constants/Colors';
 
@@ -32,7 +32,7 @@ const AuthScreen = () => {
     
 
       <Stack space={4} w="100%" alignItems="center">
-        <AuthSelector category={category}/>
+        <AuthSelector category={category} setCategory={setCategory}/>
         <Input
           w={{
             base: "75%",
@@ -71,20 +71,7 @@ const AuthScreen = () => {
     </Box>
   );
 }
-
-export default AuthScreen;
-
-export const ScreenOptions:any=()=>{
-    return {
-      headerTitle:'',
-      headerTitleStyle: {
-        fontSize:26,
-        fontWeight: "bold",
-      },
-    };
-}
-
-const AuthSelector=({category}:any) => { 
+const AuthSelector=({category,setCategory}:any) => { 
   return (
     <Box
       backgroundColor={Color.Secondary}
@@ -104,6 +91,7 @@ const AuthSelector=({category}:any) => {
         alignItems={"center"}
         flex={1}
       >
+        <Pressable onPress={() => setCategory("Login")}></Pressable>
         <Box
           backgroundColor={Color.Primary}
           p={1}
@@ -134,3 +122,16 @@ const AuthSelector=({category}:any) => {
     </Box>
   );
 }
+
+export default AuthScreen;
+
+export const ScreenOptions:any=()=>{
+    return {
+      headerTitle:'',
+      headerTitleStyle: {
+        fontSize:26,
+        fontWeight: "bold",
+      },
+    };
+}
+
