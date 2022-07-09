@@ -72,6 +72,7 @@ const AuthScreen = () => {
   );
 }
 const AuthSelector=({category,setCategory}:any) => { 
+  //this will be the login or signup selector
   return (
     <Box
       backgroundColor={Color.Secondary}
@@ -91,33 +92,37 @@ const AuthSelector=({category,setCategory}:any) => {
         alignItems={"center"}
         flex={1}
       >
-        <Pressable onPress={() => setCategory("Login")}></Pressable>
-        <Box
-          backgroundColor={Color.Primary}
-          p={1}
-          borderRadius={10}
-          paddingX={10}
-        >
-          <Text
-            fontWeight={"bold"}
-            color={category === "Login" ? "gray.300" : "white"}
+        <Pressable onPress={() => setCategory("Login")}>
+          <Box
+            backgroundColor={Color.Primary}
+            p={1}
+            borderRadius={10}
+            paddingX={10}
           >
-            Login
-          </Text>
-        </Box>
-        <Box
-          backgroundColor={Color.Primary}
-          p={1}
-          borderRadius={10}
-          paddingX={10}
-        >
-          <Text
-            fontWeight={"bold"}
-            color={category === "Signup" ? "gray.300" : "white"}
+            <Text
+              fontWeight={"bold"}
+              color={category === "Login" ? "gray.300" : "white"}
+            >
+              Login
+            </Text>
+          </Box>
+        </Pressable>
+
+        <Pressable onPress={() => setCategory("Signup")}>
+          <Box
+            backgroundColor={Color.Primary}
+            p={1}
+            borderRadius={10}
+            paddingX={10}
           >
-            Signup
-          </Text>
-        </Box>
+            <Text
+              fontWeight={"bold"}
+              color={category === "Signup" ? "gray.300" : "white"}
+            >
+              Signup
+            </Text>
+          </Box>
+        </Pressable>
       </Box>
     </Box>
   );
