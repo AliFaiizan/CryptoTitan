@@ -92,6 +92,7 @@ const AuthSelector=({category,setCategory}:any) => {
         alignItems={"center"}
         flex={1}
       >
+        //this will be the login button
         <Pressable onPress={() => setCategory("Login")}>
           <Box
             backgroundColor={Color.Primary}
@@ -107,7 +108,7 @@ const AuthSelector=({category,setCategory}:any) => {
             </Text>
           </Box>
         </Pressable>
-
+        //this is the signup button
         <Pressable onPress={() => setCategory("Signup")}>
           <Box
             backgroundColor={Color.Primary}
