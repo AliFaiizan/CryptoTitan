@@ -29,44 +29,109 @@ const AuthScreen = () => {
       p={4}
       flex={1}
     >
-    
-
       <Stack space={4} w="100%" alignItems="center">
-        <AuthSelector category={category} setCategory={setCategory}/>
-        <Input
-          w={{
-            base: "75%",
-            md: "25%",
-          }}
-          InputLeftElement={
-            <Icon
-              as={<MaterialIcons name="person" />}
-              size={5}
-              ml="2"
-              color="muted.400"
-            />
-          }
-          placeholder="Name"
-        />
-        <Input
-          w={{
-            base: "75%",
-            md: "25%",
-          }}
-          type={show ? "text" : "password"}
-          InputRightElement={
-            <Icon
-              as={
-                <MaterialIcons name={show ? "visibility" : "visibility-off"} />
+        <AuthSelector category={category} setCategory={setCategory} />
+        //login section
+        {category === "login" ? (
+          <Box>
+            <Input
+              w={{
+                base: "75%",
+                md: "25%",
+              }}
+              InputLeftElement={
+                <Icon
+                  as={<MaterialIcons name="person" />}
+                  size={5}
+                  ml="2"
+                  color="muted.400"
+                />
               }
-              size={5}
-              mr="2"
-              color="muted.400"
-              onPress={() => setShow(!show)}
+              placeholder="Name"
             />
-          }
-          placeholder="Password"
-        />
+            <Input
+              w={{
+                base: "75%",
+                md: "25%",
+              }}
+              type={show ? "text" : "password"}
+              InputRightElement={
+                <Icon
+                  as={
+                    <MaterialIcons
+                      name={show ? "visibility" : "visibility-off"}
+                    />
+                  }
+                  size={5}
+                  mr="2"
+                  color="muted.400"
+                  onPress={() => setShow(!show)}
+                />
+              }
+              placeholder="Password"
+            />
+          </Box>
+        ) : (
+          <Box>
+            <Input
+              w={{
+                base: "75%",
+                md: "25%",
+              }}
+              InputLeftElement={
+                <Icon
+                  as={<MaterialIcons name="person" />}
+                  size={5}
+                  ml="2"
+                  color="muted.400"
+                />
+              }
+              placeholder="Name"
+            />
+            <Input
+              w={{
+                base: "75%",
+                md: "25%",
+              }}
+              type={show ? "text" : "password"}
+              InputRightElement={
+                <Icon
+                  as={
+                    <MaterialIcons
+                      name={show ? "visibility" : "visibility-off"}
+                    />
+                  }
+                  size={5}
+                  mr="2"
+                  color="muted.400"
+                  onPress={() => setShow(!show)}
+                />
+              }
+              placeholder="Password"
+            />
+            <Input
+              w={{
+                base: "75%",
+                md: "25%",
+              }}
+              type={show ? "text" : "password"}
+              InputRightElement={
+                <Icon
+                  as={
+                    <MaterialIcons
+                      name={show ? "visibility" : "visibility-off"}
+                    />
+                  }
+                  size={5}
+                  mr="2"
+                  color="muted.400"
+                  onPress={() => setShow(!show)}
+                />
+              }
+              placeholder="Confirm Password"
+            />
+          </Box>
+        )}
       </Stack>
     </Box>
   );
@@ -87,44 +152,44 @@ const AuthSelector=({category,setCategory}:any) => {
       borderRadius={10}
     >
       <Box
-        flexDir={"row"}
-        justifyContent="space-around"
-        alignItems={"center"}
-        flex={1}
-      >
-        //this will be the login button
-        <Pressable onPress={() => setCategory("Login")}>
-          <Box
-            backgroundColor={Color.Primary}
-            p={1}
-            borderRadius={10}
-            paddingX={10}
+      flexDir={"row"}
+      justifyContent="space-around"
+      alignItems={"center"}
+      flex={1}
+    >
+      //this will be the login button
+      <Pressable onPress={() => setCategory("Login")}>
+        <Box
+          backgroundColor={Color.Primary}
+          p={1}
+          borderRadius={10}
+          paddingX={10}
+        >
+          <Text
+            fontWeight={"bold"}
+            color={category === "Login" ? "gray.300" : "white"}
           >
-            <Text
-              fontWeight={"bold"}
-              color={category === "Login" ? "gray.300" : "white"}
-            >
-              Login
-            </Text>
-          </Box>
-        </Pressable>
-        //this is the signup button
-        <Pressable onPress={() => setCategory("Signup")}>
-          <Box
-            backgroundColor={Color.Primary}
-            p={1}
-            borderRadius={10}
-            paddingX={10}
+            Login
+          </Text>
+        </Box>
+      </Pressable>
+      //this is the signup button
+      <Pressable onPress={() => setCategory("Signup")}>
+        <Box
+          backgroundColor={Color.Primary}
+          p={1}
+          borderRadius={10}
+          paddingX={10}
+        >
+          <Text
+            fontWeight={"bold"}
+            color={category === "Signup" ? "gray.300" : "white"}
           >
-            <Text
-              fontWeight={"bold"}
-              color={category === "Signup" ? "gray.300" : "white"}
-            >
-              Signup
-            </Text>
-          </Box>
-        </Pressable>
-      </Box>
+            Signup
+          </Text>
+        </Box>
+      </Pressable>
+    </Box>
     </Box>
   );
 }
