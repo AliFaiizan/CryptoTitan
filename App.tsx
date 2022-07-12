@@ -2,7 +2,7 @@ import React from 'react';
 import { NativeBaseProvider,extendTheme } from "native-base";
 import AppNavigator from "./navigation/AppNavigator";
 import { LinearGradient } from 'expo-linear-gradient';
-import { useStore , combineReducer} from 'react-redux';
+import { useStore} from 'react-redux';
 
 const themeconfig = {
   colors: {
