@@ -1,8 +1,17 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import { NativeBaseProvider,extendTheme } from "native-base";
 import AppNavigator from "./navigation/AppNavigator";
 import { LinearGradient } from 'expo-linear-gradient';
-import { useStore} from 'react-redux';
+import AppLoading from 'expo-app-loading';
+import * as Font from "expo-font";
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import ReduxThunk from "redux-thunk";
+import { Provider } from "react-redux";
+
+const rootReducer = combineReducers({
+});
+
+const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
 const themeconfig = {
   colors: {
@@ -29,9 +38,37 @@ const nBConfig = {
 };
 
 export default function App() {
+
+   const [fontloaded, setFontloaded] = useState(false);
+
+   //fetch fonts to use in styleSheet
+   const fetchFont = () => {
+     return Font.loadAsync({
+       "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
+       "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
+     });
+   };
+   //if font is loaded the load the app
+
+   if (!fontloaded) {
+     return (
+       <AppLoading
+         startAsync={fetchFont}
+         onFinish={() => {
+           setFontloaded(true);
+         }}
+         onError={() => {
+           setFontloaded(false);
+         }}
+       />
+     );
+   }
   return (
-    <NativeBaseProvider theme={customTheme} config={nBConfig}>
-      <AppNavigator />
-    </NativeBaseProvider>
+    <Provider store={store}>
+
+      <NativeBaseProvider theme={customTheme} config={nBConfig}>
+        <AppNavigator />
+      </NativeBaseProvider>
+    </Provider>
   );
 }
