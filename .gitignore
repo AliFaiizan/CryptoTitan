@@ -1,4 +1,5 @@
 node_modules/
+crypto-backend/
 .expo/
 dist/
 npm-debug.*

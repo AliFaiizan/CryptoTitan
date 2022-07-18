@@ -1,5 +1,5 @@
 //import { GOOGLE_API } from "../../secrets";
-//import AsyncStorage from "@react-native-async-storage/async-storage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const AUTHENTICATE = "AUTHENTICATE";
 export const SET_DID_TRY_AL = "SET_DID_TRY_AL";
@@ -17,7 +17,7 @@ export const setDidTryAL = () => {
 export const signUp = (email: any, password: any) => {
   return async (dispatch: any) => {
     const response = await fetch(
-      `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${GOOGLE_API}`,
+      `server address`,
       {
         method: "POST",
         headers: {
@@ -49,7 +49,7 @@ export const signUp = (email: any, password: any) => {
 export const login = (email: any, password: any) => {
   return async (dispatch: any) => {
     const response = await fetch(
-      `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${GOOGLE_API}`,
+      `server address`,
       {
         method: "POST",
         headers: {
