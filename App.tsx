@@ -26,7 +26,7 @@ const themeconfig = {
     },
   },
   useSystemColorMode: false,
-  initialColorMode: "dark",
+  initialColorMode: "light",
 };
 
 const customTheme = extendTheme({ themeconfig });
