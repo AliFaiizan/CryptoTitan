@@ -2,7 +2,7 @@
 import React,{useState} from 'react'
 
 import {Box,Text,Input,Stack,Icon, Pressable, Button} from 'native-base';
-import {MaterialIcons} from '@expo/vector-icons';
+import {AntDesign, MaterialIcons} from '@expo/vector-icons';
 import { Color } from '../../constants/Colors';
 
 
@@ -109,7 +109,7 @@ const AuthScreen = () => {
               w={{
                 base: "75%",
                 md: "25%",
-              }}             
+              }}
               my={2}
               type={show ? "text" : "password"}
               InputRightElement={
@@ -138,6 +138,27 @@ const AuthScreen = () => {
             />
 
             <Button my={2}>LOGIN</Button>
+            <Pressable>
+              <Box
+                h={12}
+                borderRadius={50}
+                alignItems={"center"}
+                justifyContent={"space-around"}
+                backgroundColor="red.500"
+                shadow={3}
+                flexDir='row'
+              >
+                <Icon
+                  as={<AntDesign name="google" />}
+                  size={5}
+                  ml="2"
+                  color="white"
+                />
+                <Text fontFamily={"open-sans"} color={Color.TColor}>
+                  LOGIN WITH GOOGLE
+                </Text>
+              </Box>
+            </Pressable>
           </Box>
         ) : (
           <Box>
@@ -219,9 +240,7 @@ const AuthScreen = () => {
               }
               placeholder="Confirm Password"
             />
-            <Button my={2}>
-              SIGNUP
-            </Button>
+            <Button my={2}>SIGNUP</Button>
           </Box>
         )}
       </Stack>

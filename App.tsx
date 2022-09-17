@@ -20,9 +20,10 @@ const themeconfig = {
       // Can simply pass default props to change default behaviour of components.
       baseStyle: {
         rounded: "md",
+        shadow: 3,
       },
       defaultProps: {
-       borderRadius:50
+        borderRadius: 50,
       },
       variants: {
         rounded: () => {
@@ -38,7 +39,7 @@ const themeconfig = {
       },
       defaultProps: {
         shadow: 3,
-        variant:'rounded'
+        variant: "rounded",
       },
     },
   },
