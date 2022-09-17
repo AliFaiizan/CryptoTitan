@@ -1,142 +1,12 @@
 
-import React from 'react'
+import React,{useState} from 'react'
 
-import {Box,Text,Input,Stack,Icon, Pressable} from 'native-base';
+import {Box,Text,Input,Stack,Icon, Pressable, Button} from 'native-base';
 import {MaterialIcons} from '@expo/vector-icons';
 import { Color } from '../../constants/Colors';
 
 
-
-
-
-
-
-const AuthScreen = () => {
-   const [show, setShow] = React.useState(false);
-
-   //used to determine if login or signup
-   const [category, setCategory] = React.useState('Login');
-  return (
-    <Box
-      shadow={10}
-      bg={{
-        linearGradient: {
-          colors: ["#212931", "#31453e"],
-          start: [0.5, 0.8],
-          end: [0.5, 1],
-        },
-      }}
-      p={4}
-      flex={1}
-    >
-      <Stack space={4} w="100%" alignItems="center">
-        <AuthSelector category={category} setCategory={setCategory} />
-        //login section
-        {category === "login" ? (
-          <Box>
-            <Input
-              w={{
-                base: "75%",
-                md: "25%",
-              }}
-              InputLeftElement={
-                <Icon
-                  as={<MaterialIcons name="person" />}
-                  size={5}
-                  ml="2"
-                  color="muted.400"
-                />
-              }
-              placeholder="Name"
-            />
-            <Input
-              w={{
-                base: "75%",
-                md: "25%",
-              }}
-              type={show ? "text" : "password"}
-              InputRightElement={
-                <Icon
-                  as={
-                    <MaterialIcons
-                      name={show ? "visibility" : "visibility-off"}
-                    />
-                  }
-                  size={5}
-                  mr="2"
-                  color="muted.400"
-                  onPress={() => setShow(!show)}
-                />
-              }
-              placeholder="Password"
-            />
-          </Box>
-        ) : (
-          <Box>
-            <Input
-              w={{
-                base: "75%",
-                md: "25%",
-              }}
-              InputLeftElement={
-                <Icon
-                  as={<MaterialIcons name="person" />}
-                  size={5}
-                  ml="2"
-                  color="muted.400"
-                />
-              }
-              placeholder="Name"
-            />
-            <Input
-              w={{
-                base: "75%",
-                md: "25%",
-              }}
-              type={show ? "text" : "password"}
-              InputRightElement={
-                <Icon
-                  as={
-                    <MaterialIcons
-                      name={show ? "visibility" : "visibility-off"}
-                    />
-                  }
-                  size={5}
-                  mr="2"
-                  color="muted.400"
-                  onPress={() => setShow(!show)}
-                />
-              }
-              placeholder="Password"
-            />
-            <Input
-              w={{
-                base: "75%",
-                md: "25%",
-              }}
-              type={show ? "text" : "password"}
-              InputRightElement={
-                <Icon
-                  as={
-                    <MaterialIcons
-                      name={show ? "visibility" : "visibility-off"}
-                    />
-                  }
-                  size={5}
-                  mr="2"
-                  color="muted.400"
-                  onPress={() => setShow(!show)}
-                />
-              }
-              placeholder="Confirm Password"
-            />
-          </Box>
-        )}
-      </Stack>
-    </Box>
-  );
-}
-const AuthSelector=({category,setCategory}:any) => { 
+const AuthSelector = ({ category, setCategory }: any) => {
   //this will be the login or signup selector
   return (
     <Box
@@ -145,54 +15,227 @@ const AuthSelector=({category,setCategory}:any) => {
         base: "75%",
         md: "25%",
       }}
-      h={{
-        base: "17%",
-        md: "15%",
-      }}
       borderRadius={10}
-    >
-      <Box
       flexDir={"row"}
-      justifyContent="space-around"
+      justifyContent={"center"}
       alignItems={"center"}
-      flex={1}
     >
-      //this will be the login button
-      <Pressable onPress={() => setCategory("Login")}>
+      <Pressable onPress={() => setCategory("Login")} flex={1}>
         <Box
-          backgroundColor={Color.Primary}
-          p={1}
+          backgroundColor={
+            category === "Login" ? Color.Primary : Color.Secondary
+          }
+          h={8}
+          m={1}
           borderRadius={10}
-          paddingX={10}
+          alignItems={"center"}
+          justifyContent="center"
+          shadow={category === "Login" ? 5 : 0}
         >
           <Text
-            fontWeight={"bold"}
-            color={category === "Login" ? "gray.300" : "white"}
+            fontFamily={"open-sans-bold"}
+            color={category === "Login" ? Color.TColor : Color.LTColor}
           >
-            Login
+            LOGIN
           </Text>
         </Box>
       </Pressable>
-      //this is the signup button
-      <Pressable onPress={() => setCategory("Signup")}>
+      <Pressable onPress={() => setCategory("Signup")} flex={1}>
         <Box
-          backgroundColor={Color.Primary}
-          p={1}
+          backgroundColor={
+            category === "Signup" ? Color.Primary : Color.Secondary
+          }
+          h={8}
+          m={1}
           borderRadius={10}
-          paddingX={10}
+          alignItems={"center"}
+          justifyContent={"center"}
+          shadow={category === "Signup" ? 5 : 0}
         >
           <Text
-            fontWeight={"bold"}
-            color={category === "Signup" ? "gray.300" : "white"}
+            fontFamily={"open-sans-bold"}
+            color={category === "Signup" ? Color.TColor : Color.LTColor}
           >
-            Signup
+            SIGNUP
           </Text>
         </Box>
       </Pressable>
     </Box>
+  );
+};
+
+
+
+
+const AuthScreen = () => {
+   const [show, setShow] = useState(false);
+
+   //used to determine if login or signup
+   const [category, setCategory] = useState('Login');
+
+   const [formValue,setFormValue]=useState({
+    email:'',
+    password:''
+   })
+
+
+
+  return (
+    <Box shadow={10} p={4} flex={1}>
+      <Stack space={4} w="100%" alignItems="center">
+        <Box h={5} mb={4}>
+          <AuthSelector category={category} setCategory={setCategory} />
+        </Box>
+
+        {category === "Login" ? (
+          <Box justifyContent={"space-between"}>
+            <Input
+              w={{
+                base: "75%",
+                md: "25%",
+              }}
+              variant={"rounded"}
+              my={2}
+              InputLeftElement={
+                <Icon
+                  as={<MaterialIcons name="person" />}
+                  size={5}
+                  ml="2"
+                  color="muted.400"
+                />
+              }
+              placeholder="Email"
+            />
+            <Input
+              w={{
+                base: "75%",
+                md: "25%",
+              }}
+              variant={"rounded"}
+              my={2}
+              type={show ? "text" : "password"}
+              InputRightElement={
+                <Icon
+                  as={
+                    <MaterialIcons
+                      name={show ? "visibility" : "visibility-off"}
+                    />
+                  }
+                  size={5}
+                  mr="2"
+                  color="muted.400"
+                  onPress={() => setShow(!show)}
+                />
+              }
+              InputLeftElement={
+                <Icon
+                  as={<MaterialIcons name="lock" />}
+                  size={5}
+                  ml="2"
+                  color="muted.400"
+                  onPress={() => setShow(!show)}
+                />
+              }
+              placeholder="Password"
+            />
+
+            <Button borderRadius={50} my={2}>
+              LOGIN
+            </Button>
+          </Box>
+        ) : (
+          <Box>
+            <Input
+              w={{
+                base: "75%",
+                md: "25%",
+              }}
+              variant={"rounded"}
+              my={2}
+              InputLeftElement={
+                <Icon
+                  as={<MaterialIcons name="person" />}
+                  size={5}
+                  ml="2"
+                  color="muted.400"
+                />
+              }
+              placeholder="Email"
+            />
+            <Input
+              w={{
+                base: "75%",
+                md: "25%",
+              }}
+              my={2}
+              variant={"rounded"}
+              type={show ? "text" : "password"}
+              InputRightElement={
+                <Icon
+                  as={
+                    <MaterialIcons
+                      name={show ? "visibility" : "visibility-off"}
+                    />
+                  }
+                  size={5}
+                  mr="2"
+                  color="muted.400"
+                  onPress={() => setShow(!show)}
+                />
+              }
+              InputLeftElement={
+                <Icon
+                  as={<MaterialIcons name="lock" />}
+                  size={5}
+                  ml="2"
+                  color="muted.400"
+                  onPress={() => setShow(!show)}
+                />
+              }
+              placeholder="Password"
+            />
+            <Input
+              w={{
+                base: "75%",
+                md: "25%",
+              }}
+              variant={"rounded"}
+              my={2}
+              type={show ? "text" : "password"}
+              InputRightElement={
+                <Icon
+                  as={
+                    <MaterialIcons
+                      name={show ? "visibility" : "visibility-off"}
+                    />
+                  }
+                  size={5}
+                  mr="2"
+                  color="muted.400"
+                  onPress={() => setShow(!show)}
+                />
+              }
+              InputLeftElement={
+                <Icon
+                  as={<MaterialIcons name="lock" />}
+                  size={5}
+                  ml="2"
+                  color="muted.400"
+                  onPress={() => setShow(!show)}
+                />
+              }
+              placeholder="Confirm Password"
+            />
+            <Button borderRadius={50} my={2}>
+              SIGNUP
+            </Button>
+          </Box>
+        )}
+      </Stack>
     </Box>
   );
 }
+
 
 export default AuthScreen;
 

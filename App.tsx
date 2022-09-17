@@ -65,7 +65,7 @@ export default function App() {
    }
   return (
     <Provider store={store}>
-      <NativeBaseProvider theme={customTheme} config={nBConfig}>
+      <NativeBaseProvider theme={customTheme} >
         <AppNavigator />
       </NativeBaseProvider>
     </Provider>

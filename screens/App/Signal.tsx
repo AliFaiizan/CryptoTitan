@@ -7,11 +7,11 @@ const Signal = () => {
    <Box>
     <Box>
         <Image />
-        <Text></Text>
-        {/* {number of exchanges it is available on} */}
+        <Text>signal</Text>
+       
     </Box>
     <Box>
-        {/* view targets */}
+        
     </Box>
    </Box>
   )

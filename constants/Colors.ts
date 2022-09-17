@@ -1,4 +1,6 @@
 export const Color = {
-  Primary: "#212931",
-  Secondary: "#1B232A",
+  Primary: "white",
+  Secondary: "light.200",
+  TColor: "black",
+  LTColor: "gray.300",
 };

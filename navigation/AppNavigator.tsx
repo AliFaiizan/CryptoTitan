@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 
 
 import AuthScreen,{ ScreenOptions as AuthOptions}  from "../screens/User/AuthScreen"; 
+import { Color } from "../constants/Colors";
 
 
 
@@ -74,9 +75,9 @@ const AppNavigator = (props: any) => {
 
 const defaultNavigationOption = {
   headerStyle: {
-    backgroundColor: Platform.OS === "android" ? "#212931" : "#fff",
+    backgroundColor: Platform.OS === "android" ? Color.Primary : "#fff",
   },
-  headerTintColor: Platform.OS === "android" ? "#A7AFB7" : "",
+  headerTintColor: Platform.OS === "android" ? Color.Primary : "",
 };
 
 
