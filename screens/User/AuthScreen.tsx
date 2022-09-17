@@ -94,7 +94,6 @@ const AuthScreen = () => {
                 base: "75%",
                 md: "25%",
               }}
-              variant={"rounded"}
               my={2}
               InputLeftElement={
                 <Icon
@@ -110,8 +109,7 @@ const AuthScreen = () => {
               w={{
                 base: "75%",
                 md: "25%",
-              }}
-              variant={"rounded"}
+              }}             
               my={2}
               type={show ? "text" : "password"}
               InputRightElement={
@@ -139,9 +137,7 @@ const AuthScreen = () => {
               placeholder="Password"
             />
 
-            <Button borderRadius={50} my={2}>
-              LOGIN
-            </Button>
+            <Button my={2}>LOGIN</Button>
           </Box>
         ) : (
           <Box>
@@ -150,7 +146,6 @@ const AuthScreen = () => {
                 base: "75%",
                 md: "25%",
               }}
-              variant={"rounded"}
               my={2}
               InputLeftElement={
                 <Icon
@@ -168,7 +163,6 @@ const AuthScreen = () => {
                 md: "25%",
               }}
               my={2}
-              variant={"rounded"}
               type={show ? "text" : "password"}
               InputRightElement={
                 <Icon
@@ -199,7 +193,6 @@ const AuthScreen = () => {
                 base: "75%",
                 md: "25%",
               }}
-              variant={"rounded"}
               my={2}
               type={show ? "text" : "password"}
               InputRightElement={
@@ -226,7 +219,7 @@ const AuthScreen = () => {
               }
               placeholder="Confirm Password"
             />
-            <Button borderRadius={50} my={2}>
+            <Button my={2}>
               SIGNUP
             </Button>
           </Box>

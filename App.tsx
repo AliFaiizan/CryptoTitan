@@ -1,5 +1,5 @@
 import React ,{useState} from 'react';
-import { NativeBaseProvider,extendTheme } from "native-base";
+import { NativeBaseProvider,extendTheme, Input } from "native-base";
 import AppNavigator from "./navigation/AppNavigator";
 import { LinearGradient } from 'expo-linear-gradient';
 import AppLoading from 'expo-app-loading';
@@ -7,29 +7,57 @@ import * as Font from "expo-font";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import ReduxThunk from "redux-thunk";
 import { Provider } from "react-redux";
+import { Color } from './constants/Colors';
 
 const rootReducer = combineReducers({
 });
 
-const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
+//const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
 const themeconfig = {
+  components: {
+    Button: {
+      // Can simply pass default props to change default behaviour of components.
+      baseStyle: {
+        rounded: "md",
+      },
+      defaultProps: {
+       borderRadius:50
+      },
+      variants: {
+        rounded: () => {
+          return {
+            rounded: "full",
+          };
+        },
+      },
+    },
+    Input: {
+      baseStyle: {
+        backgroundColor: "white",
+      },
+      defaultProps: {
+        shadow: 3,
+        variant:'rounded'
+      },
+    },
+  },
   colors: {
     // Add new color
     primary: {
-      900: "#212931",
+      100: "white",
     },
     // Redefinig only one shade, rest of the color will remain same.
     accent: {
-      700:'#1B232A',
-      900:"#161C22",
+      200: "light.200",
+      900: "#161C22",
     },
   },
   useSystemColorMode: false,
   initialColorMode: "light",
 };
 
-const customTheme = extendTheme({ themeconfig });
+const customTheme = extendTheme( themeconfig );
 
 const nBConfig = {
   dependencies: {
@@ -64,10 +92,10 @@ export default function App() {
      );
    }
   return (
-    <Provider store={store}>
+
       <NativeBaseProvider theme={customTheme} >
         <AppNavigator />
       </NativeBaseProvider>
-    </Provider>
+
   );
 }
