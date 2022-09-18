@@ -1,102 +1,120 @@
-import React ,{useState} from 'react';
-import { NativeBaseProvider,extendTheme, Input } from "native-base";
-import AppNavigator from "./navigation/AppNavigator";
-import { LinearGradient } from 'expo-linear-gradient';
-import AppLoading from 'expo-app-loading';
-import * as Font from "expo-font";
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import ReduxThunk from "redux-thunk";
-import { Provider } from "react-redux";
-import { Color } from './constants/Colors';
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * Generated with the TypeScript template
+ * https://github.com/react-native-community/react-native-template-typescript
+ *
+ * @format
+ */
 
-const rootReducer = combineReducers({
+import React, {type PropsWithChildren} from 'react';
+import {
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  useColorScheme,
+  View,
+} from 'react-native';
+
+import {
+  Colors,
+  DebugInstructions,
+  Header,
+  LearnMoreLinks,
+  ReloadInstructions,
+} from 'react-native/Libraries/NewAppScreen';
+
+const Section: React.FC<
+  PropsWithChildren<{
+    title: string;
+  }>
+> = ({children, title}) => {
+  const isDarkMode = useColorScheme() === 'dark';
+  return (
+    <View style={styles.sectionContainer}>
+      <Text
+        style={[
+          styles.sectionTitle,
+          {
+            color: isDarkMode ? Colors.white : Colors.black,
+          },
+        ]}>
+        {title}
+      </Text>
+      <Text
+        style={[
+          styles.sectionDescription,
+          {
+            color: isDarkMode ? Colors.light : Colors.dark,
+          },
+        ]}>
+        {children}
+      </Text>
+    </View>
+  );
+};
+
+const App = () => {
+  const isDarkMode = useColorScheme() === 'dark';
+
+  const backgroundStyle = {
+    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  };
+
+  return (
+    <SafeAreaView style={backgroundStyle}>
+      <StatusBar
+        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        backgroundColor={backgroundStyle.backgroundColor}
+      />
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        style={backgroundStyle}>
+        <Header />
+        <View
+          style={{
+            backgroundColor: isDarkMode ? Colors.black : Colors.white,
+          }}>
+          <Section title="Step One">
+            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
+            screen and then come back to see your edits.
+          </Section>
+          <Section title="See Your Changes">
+            <ReloadInstructions />
+          </Section>
+          <Section title="Debug">
+            <DebugInstructions />
+          </Section>
+          <Section title="Learn More">
+            Read the docs to discover what to do next:
+          </Section>
+          <LearnMoreLinks />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
+
+const styles = StyleSheet.create({
+  sectionContainer: {
+    marginTop: 32,
+    paddingHorizontal: 24,
+  },
+  sectionTitle: {
+    fontSize: 24,
+    fontWeight: '600',
+  },
+  sectionDescription: {
+    marginTop: 8,
+    fontSize: 18,
+    fontWeight: '400',
+  },
+  highlight: {
+    fontWeight: '700',
+  },
 });
 
-//const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
-
-const themeconfig = {
-  components: {
-    Button: {
-      // Can simply pass default props to change default behaviour of components.
-      baseStyle: {
-        rounded: "md",
-        shadow: 3,
-      },
-      defaultProps: {
-        borderRadius: 50,
-      },
-      variants: {
-        rounded: () => {
-          return {
-            rounded: "full",
-          };
-        },
-      },
-    },
-    Input: {
-      baseStyle: {
-        backgroundColor: "white",
-      },
-      defaultProps: {
-        shadow: 3,
-        variant: "rounded",
-      },
-    },
-  },
-  colors: {
-    // Add new color
-    primary: {
-      100: "white",
-    },
-    // Redefinig only one shade, rest of the color will remain same.
-    accent: {
-      200: "light.200",
-      900: "#161C22",
-    },
-  },
-  useSystemColorMode: false,
-  initialColorMode: "light",
-};
-
-const customTheme = extendTheme( themeconfig );
-
-const nBConfig = {
-  dependencies: {
-    "linear-gradient": LinearGradient,
-  },
-};
-
-export default function App() {
-
-   const [fontloaded, setFontloaded] = useState(false);
-
-   //fetch fonts to use in styleSheet
-   const fetchFont = () => {
-     return Font.loadAsync({
-       "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
-       "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
-     });
-   };
-   //if font is loaded the load the app
-
-   if (!fontloaded) {
-     return (
-       <AppLoading
-         startAsync={fetchFont}
-         onFinish={() => {
-           setFontloaded(true);
-         }}
-         onError={() => {
-           setFontloaded(false);
-         }}
-       />
-     );
-   }
-  return (
-
-      <NativeBaseProvider theme={customTheme} >
-        <AppNavigator />
-      </NativeBaseProvider>
-
-  );
-}
+export default App;
