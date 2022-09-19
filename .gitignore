@@ -1,7 +1,7 @@
 # OSX
 #
 .DS_Store
-.env
+
 # Xcode
 #
 build/
@@ -31,6 +31,9 @@ local.properties
 *.iml
 *.hprof
 .cxx/
+#keystore files
+*.jks
+*.keystore
 
 # node.js
 #

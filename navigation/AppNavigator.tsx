@@ -7,7 +7,6 @@ import { Platform } from "react-native";
 //import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Ionicons, Entypo } from "@expo/vector-icons";
 //import CustomDrawer from "../components/shop/CustomDrawer";
 import { useSelector } from "react-redux";
 

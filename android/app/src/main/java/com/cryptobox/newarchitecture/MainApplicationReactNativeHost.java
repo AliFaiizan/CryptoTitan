@@ -1,4 +1,4 @@
-package com.cryptoboxx.newarchitecture;
+package com.cryptobox.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.cryptoboxx.BuildConfig;
-import com.cryptoboxx.newarchitecture.components.MainComponentsRegistry;
-import com.cryptoboxx.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.cryptobox.BuildConfig;
+import com.cryptobox.newarchitecture.components.MainComponentsRegistry;
+import com.cryptobox.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -2,7 +2,8 @@
 import React,{useState} from 'react'
 
 import {Box,Text,Input,Stack,Icon, Pressable, Button} from 'native-base';
-import {AntDesign, MaterialIcons} from '@expo/vector-icons';
+import AntDesign  from 'react-native-vector-icons/AntDesign';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { Color } from '../../constants/Colors';
 
 
