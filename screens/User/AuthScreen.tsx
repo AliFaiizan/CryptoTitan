@@ -79,6 +79,14 @@ const AuthScreen = () => {
     password:''
    })
 
+   const {email,password}= formValue;
+
+   const inputChangeHandler=(e:any) => { 
+      setFormValue((prevVal) => { 
+        //has to be fixed
+        return {...prevVal,[e.name]:e.value}
+       })
+    }
 
 
   return (
@@ -88,12 +96,12 @@ const AuthScreen = () => {
           <AuthSelector category={category} setCategory={setCategory} />
         </Box>
 
-        {category === "Login" ? (
-          <Box justifyContent={"space-between"}>
+        {category === 'Login' ? (
+          <Box justifyContent={'space-between'}>
             <Input
               w={{
-                base: "75%",
-                md: "25%",
+                base: '75%',
+                md: '25%',
               }}
               my={2}
               InputLeftElement={
@@ -105,19 +113,21 @@ const AuthScreen = () => {
                 />
               }
               placeholder="Email"
+              value={email}
+              onChange={inputChangeHandler}
             />
             <Input
               w={{
-                base: "75%",
-                md: "25%",
+                base: '75%',
+                md: '25%',
               }}
               my={2}
-              type={show ? "text" : "password"}
+              type={show ? 'text' : 'password'}
               InputRightElement={
                 <Icon
                   as={
                     <MaterialIcons
-                      name={show ? "visibility" : "visibility-off"}
+                      name={show ? 'visibility' : 'visibility-off'}
                     />
                   }
                   size={5}
@@ -136,6 +146,8 @@ const AuthScreen = () => {
                 />
               }
               placeholder="Password"
+              value={password}
+              onChange={inputChangeHandler}
             />
 
             <Button my={2}>LOGIN</Button>
@@ -143,19 +155,18 @@ const AuthScreen = () => {
               <Box
                 h={12}
                 borderRadius={50}
-                alignItems={"center"}
-                justifyContent={"space-around"}
+                alignItems={'center'}
+                justifyContent={'space-around'}
                 backgroundColor="red.500"
                 shadow={3}
-                flexDir='row'
-              >
+                flexDir="row">
                 <Icon
                   as={<AntDesign name="google" />}
                   size={5}
                   ml="2"
                   color="white"
                 />
-                <Text fontFamily={"open-sans"} color={Color.TColor}>
+                <Text fontFamily={'open-sans'} color={Color.TColor}>
                   LOGIN WITH GOOGLE
                 </Text>
               </Box>
@@ -165,8 +176,8 @@ const AuthScreen = () => {
           <Box>
             <Input
               w={{
-                base: "75%",
-                md: "25%",
+                base: '75%',
+                md: '25%',
               }}
               my={2}
               InputLeftElement={
@@ -181,16 +192,16 @@ const AuthScreen = () => {
             />
             <Input
               w={{
-                base: "75%",
-                md: "25%",
+                base: '75%',
+                md: '25%',
               }}
               my={2}
-              type={show ? "text" : "password"}
+              type={show ? 'text' : 'password'}
               InputRightElement={
                 <Icon
                   as={
                     <MaterialIcons
-                      name={show ? "visibility" : "visibility-off"}
+                      name={show ? 'visibility' : 'visibility-off'}
                     />
                   }
                   size={5}
@@ -212,16 +223,16 @@ const AuthScreen = () => {
             />
             <Input
               w={{
-                base: "75%",
-                md: "25%",
+                base: '75%',
+                md: '25%',
               }}
               my={2}
-              type={show ? "text" : "password"}
+              type={show ? 'text' : 'password'}
               InputRightElement={
                 <Icon
                   as={
                     <MaterialIcons
-                      name={show ? "visibility" : "visibility-off"}
+                      name={show ? 'visibility' : 'visibility-off'}
                     />
                   }
                   size={5}
