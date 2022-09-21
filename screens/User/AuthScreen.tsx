@@ -81,10 +81,11 @@ const AuthScreen = () => {
 
    const {email,password}= formValue;
 
-   const inputChangeHandler=(e:any) => { 
+   const inputChangeHandler=(value:any) => { 
       setFormValue((prevVal) => { 
+        console.log(value)
         //has to be fixed
-        return {...prevVal,[e.name]:e.value}
+        return {...prevVal}
        })
     }
 
@@ -114,7 +115,7 @@ const AuthScreen = () => {
               }
               placeholder="Email"
               value={email}
-              onChange={inputChangeHandler}
+              onChangeText={inputChangeHandler}
             />
             <Input
               w={{
@@ -147,7 +148,7 @@ const AuthScreen = () => {
               }
               placeholder="Password"
               value={password}
-              onChange={inputChangeHandler}
+              onChangeText={inputChangeHandler}
             />
 
             <Button my={2}>LOGIN</Button>
