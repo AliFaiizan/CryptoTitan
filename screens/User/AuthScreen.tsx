@@ -1,6 +1,7 @@
 
 import React,{useState} from 'react'
-
+import Formik from 'formik';
+import Yup from 'yup';
 import {Box,Text,Input,Stack,Icon, Pressable, Button} from 'native-base';
 import AntDesign  from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -21,6 +22,13 @@ const AuthSelector = ({ category, setCategory }: any) => {
       justifyContent={"center"}
       alignItems={"center"}
     >
+      <Formik>
+        {
+          (formik:any) => {
+            return 
+          }
+        }
+      </Formik>
       <Pressable onPress={() => setCategory("Login")} flex={1}>
         <Box
           backgroundColor={
