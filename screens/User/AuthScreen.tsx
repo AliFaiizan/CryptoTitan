@@ -1,6 +1,6 @@
 
 import React,{useState} from 'react'
-import Formik from 'formik';
+import {Form, Formik} from 'formik';
 import Yup from 'yup';
 import {Box,Text,Input,Stack,Icon, Pressable, Button} from 'native-base';
 import AntDesign  from 'react-native-vector-icons/AntDesign';
@@ -22,13 +22,6 @@ const AuthSelector = ({ category, setCategory }: any) => {
       justifyContent={"center"}
       alignItems={"center"}
     >
-      <Formik>
-        {
-          (formik:any) => {
-            return 
-          }
-        }
-      </Formik>
       <Pressable onPress={() => setCategory("Login")} flex={1}>
         <Box
           backgroundColor={
@@ -96,7 +89,11 @@ const AuthScreen = () => {
         return {...prevVal}
        })
     }
-
+    interface formValues{
+      email:string,
+      password:string
+    }
+  let initialValues: formValues = {email: '', password: ''};
 
   return (
     <Box shadow={10} p={4} flex={1}>
@@ -107,59 +104,66 @@ const AuthScreen = () => {
 
         {category === 'Login' ? (
           <Box justifyContent={'space-between'}>
-            <Input
-              w={{
-                base: '75%',
-                md: '25%',
-              }}
-              my={2}
-              InputLeftElement={
-                <Icon
-                  as={<MaterialIcons name="person" />}
-                  size={5}
-                  ml="2"
-                  color="muted.400"
-                />
-              }
-              placeholder="Email"
-              value={email}
-              onChangeText={inputChangeHandler}
-            />
-            <Input
-              w={{
-                base: '75%',
-                md: '25%',
-              }}
-              my={2}
-              type={show ? 'text' : 'password'}
-              InputRightElement={
-                <Icon
-                  as={
-                    <MaterialIcons
-                      name={show ? 'visibility' : 'visibility-off'}
+            <Formik
+              initialValues={initialValues}
+              onSubmit={(): void => {
+                return;
+              }}>
+              <Form>
+                <Input
+                  w={{
+                    base: '75%',
+                    md: '25%',
+                  }}
+                  my={2}
+                  InputLeftElement={
+                    <Icon
+                      as={<MaterialIcons name="person" />}
+                      size={5}
+                      ml="2"
+                      color="muted.400"
                     />
                   }
-                  size={5}
-                  mr="2"
-                  color="muted.400"
-                  onPress={() => setShow(!show)}
+                  placeholder="Email"
+                  value={email}
+                  onChangeText={inputChangeHandler}
                 />
-              }
-              InputLeftElement={
-                <Icon
-                  as={<MaterialIcons name="lock" />}
-                  size={5}
-                  ml="2"
-                  color="muted.400"
-                  onPress={() => setShow(!show)}
+                <Input
+                  w={{
+                    base: '75%',
+                    md: '25%',
+                  }}
+                  my={2}
+                  type={show ? 'text' : 'password'}
+                  InputRightElement={
+                    <Icon
+                      as={
+                        <MaterialIcons
+                          name={show ? 'visibility' : 'visibility-off'}
+                        />
+                      }
+                      size={5}
+                      mr="2"
+                      color="muted.400"
+                      onPress={() => setShow(!show)}
+                    />
+                  }
+                  InputLeftElement={
+                    <Icon
+                      as={<MaterialIcons name="lock" />}
+                      size={5}
+                      ml="2"
+                      color="muted.400"
+                      onPress={() => setShow(!show)}
+                    />
+                  }
+                  placeholder="Password"
+                  value={password}
+                  onChangeText={inputChangeHandler}
                 />
-              }
-              placeholder="Password"
-              value={password}
-              onChangeText={inputChangeHandler}
-            />
-
-            <Button my={2}>LOGIN</Button>
+                <Button my={2}>LOGIN</Button>
+              </Form>
+            </Formik>
             <Pressable>
               <Box
                 h={12}
@@ -183,85 +187,93 @@ const AuthScreen = () => {
           </Box>
         ) : (
           <Box>
-            <Input
-              w={{
-                base: '75%',
-                md: '25%',
-              }}
-              my={2}
-              InputLeftElement={
-                <Icon
-                  as={<MaterialIcons name="person" />}
-                  size={5}
-                  ml="2"
-                  color="muted.400"
-                />
-              }
-              placeholder="Email"
-            />
-            <Input
-              w={{
-                base: '75%',
-                md: '25%',
-              }}
-              my={2}
-              type={show ? 'text' : 'password'}
-              InputRightElement={
-                <Icon
-                  as={
-                    <MaterialIcons
-                      name={show ? 'visibility' : 'visibility-off'}
+            <Formik
+              initialValues={initialValues}
+              onSubmit={(): void => {
+                return;
+              }}>
+              <Form>
+                <Input
+                  w={{
+                    base: '75%',
+                    md: '25%',
+                  }}
+                  my={2}
+                  InputLeftElement={
+                    <Icon
+                      as={<MaterialIcons name="person" />}
+                      size={5}
+                      ml="2"
+                      color="muted.400"
                     />
                   }
-                  size={5}
-                  mr="2"
-                  color="muted.400"
-                  onPress={() => setShow(!show)}
+                  placeholder="Email"
                 />
-              }
-              InputLeftElement={
-                <Icon
-                  as={<MaterialIcons name="lock" />}
-                  size={5}
-                  ml="2"
-                  color="muted.400"
-                  onPress={() => setShow(!show)}
-                />
-              }
-              placeholder="Password"
-            />
-            <Input
-              w={{
-                base: '75%',
-                md: '25%',
-              }}
-              my={2}
-              type={show ? 'text' : 'password'}
-              InputRightElement={
-                <Icon
-                  as={
-                    <MaterialIcons
-                      name={show ? 'visibility' : 'visibility-off'}
+                <Input
+                  w={{
+                    base: '75%',
+                    md: '25%',
+                  }}
+                  my={2}
+                  type={show ? 'text' : 'password'}
+                  InputRightElement={
+                    <Icon
+                      as={
+                        <MaterialIcons
+                          name={show ? 'visibility' : 'visibility-off'}
+                        />
+                      }
+                      size={5}
+                      mr="2"
+                      color="muted.400"
+                      onPress={() => setShow(!show)}
                     />
                   }
-                  size={5}
-                  mr="2"
-                  color="muted.400"
-                  onPress={() => setShow(!show)}
+                  InputLeftElement={
+                    <Icon
+                      as={<MaterialIcons name="lock" />}
+                      size={5}
+                      ml="2"
+                      color="muted.400"
+                      onPress={() => setShow(!show)}
+                    />
+                  }
+                  placeholder="Password"
                 />
-              }
-              InputLeftElement={
-                <Icon
-                  as={<MaterialIcons name="lock" />}
-                  size={5}
-                  ml="2"
-                  color="muted.400"
-                  onPress={() => setShow(!show)}
+                <Input
+                  w={{
+                    base: '75%',
+                    md: '25%',
+                  }}
+                  my={2}
+                  type={show ? 'text' : 'password'}
+                  InputRightElement={
+                    <Icon
+                      as={
+                        <MaterialIcons
+                          name={show ? 'visibility' : 'visibility-off'}
+                        />
+                      }
+                      size={5}
+                      mr="2"
+                      color="muted.400"
+                      onPress={() => setShow(!show)}
+                    />
+                  }
+                  InputLeftElement={
+                    <Icon
+                      as={<MaterialIcons name="lock" />}
+                      size={5}
+                      ml="2"
+                      color="muted.400"
+                      onPress={() => setShow(!show)}
+                    />
+                  }
+                  placeholder="Confirm Password"
                 />
-              }
-              placeholder="Confirm Password"
-            />
-            <Button my={2}>SIGNUP</Button>
+                <Button my={2}>SIGNUP</Button>
+              </Form>
+            </Formik>
           </Box>
         )}
       </Stack>
