@@ -1,6 +1,6 @@
 
 import React,{useState} from 'react'
-import {Form, Formik} from 'formik';
+import { Formik} from 'formik';
 import * as Yup from 'yup';
 import {Box,Text,Input,Stack,Icon, Pressable, Button, FormControl, WarningOutlineIcon} from 'native-base';
 import AntDesign  from 'react-native-vector-icons/AntDesign';
@@ -104,6 +104,9 @@ const AuthScreen = () => {
               initialValues={initialValues}
               onSubmit={values => {
                 console.log(values);
+                if(values.email==='ali@gmail.com' && values.password==='123456'){
+                  
+                }
               }}
               validationSchema={loginValidation}>
               {({

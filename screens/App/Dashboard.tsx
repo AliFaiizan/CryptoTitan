@@ -11,4 +11,12 @@ const Dashboard = () => {
 
 export default Dashboard
 
-const styles = StyleSheet.create({})
+export const ScreenOptions: any = () => {
+  return {
+    headerTitle: 'Home',
+    headerTitleStyle: {
+      fontSize: 26,
+      fontWeight: 'bold',
+    },
+  };
+};

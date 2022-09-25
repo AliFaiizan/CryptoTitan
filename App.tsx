@@ -16,9 +16,15 @@ import ReduxThunk from 'redux-thunk';
 import {Provider} from 'react-redux';
 import {Color} from './constants/Colors';
 
-const rootReducer = combineReducers({});
+//reducers
+import dashboardReducer from './store/reducer/dashboard.reducer';
 
-//const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
+
+const rootReducer = combineReducers({
+  dashboard:dashboardReducer
+});
+
+const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
 const themeconfig = {
   components: {
@@ -75,8 +81,10 @@ const customTheme = extendTheme(themeconfig);
 export default function App() {
 
   return (
+    <Provider store={store}>
     <NativeBaseProvider theme={customTheme}>
       <AppNavigator />
     </NativeBaseProvider>
+    </Provider>
   );
 }

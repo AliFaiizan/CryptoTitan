@@ -13,12 +13,17 @@ import { useSelector } from "react-redux";
 
 import AuthScreen,{ ScreenOptions as AuthOptions}  from "../screens/User/AuthScreen"; 
 import { Color } from "../constants/Colors";
+import Dashboard ,{ScreenOptions as DashboardOptions} from "../screens/App/Dashboard";
+
+
+//dashboard
+
 
 
 
 //Stack Creation
 
-const productsStack = createNativeStackNavigator();
+const daskboardStack = createNativeStackNavigator();
 //const orderStack = createNativeStackNavigator();
 //const shopDrawer = createDrawerNavigator();
 const authStack= createNativeStackNavigator();
@@ -32,31 +37,17 @@ const AuthNavigator=() => {
   );
 }
 
-
-
-// const ProductsNavigator = () => {
-//   // this returns full produt navigator
-//   return (
-//     <productsStack.Navigator screenOptions={defaultNavigationOption}>
-//       <productsStack.Screen
-//         name="Product"
-//         component={ProductsOverview}
-//         options={productOverviewOptions}
-//       />
-
-//       <productsStack.Screen
-//         name="Details"
-//         component={ProductDetailScreen}
-//         options={productDetailOptions}
-//       />
-//       <productsStack.Screen
-//         name="Cart"
-//         component={CartScreen}
-//         options={CartOptions}
-//       />
-//     </productsStack.Navigator>
-//   );
-// };
+const DashBoardNavigator=() => {
+     return (
+       <daskboardStack.Navigator screenOptions={defaultNavigationOption}>
+         <daskboardStack.Screen
+           name="Dashboard"
+           component={Dashboard}
+           options={DashboardOptions}
+         />
+       </daskboardStack.Navigator>
+     );
+}
 
 
 

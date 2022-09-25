@@ -13,7 +13,7 @@ export const getSignals = (signals: any) => {
          body: JSON.stringify({returnSecureToken: true }),
        });
 
-       if (!response.ok) {
+      
          if (!response.ok) {
            const { error } = await response.json();
            let message ;
@@ -22,7 +22,7 @@ export const getSignals = (signals: any) => {
            }
            throw new Error(message);
          }
-       }
+      
 
        const resData = await response.json();
 
