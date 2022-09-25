@@ -1,8 +1,8 @@
 
 import React,{useState} from 'react'
-import {Formik ,Form} from 'formik';
-import Yup from 'yup';
-import {Box,Text,Input,Stack,Icon, Pressable, Button} from 'native-base';
+import {Form, Formik} from 'formik';
+import * as Yup from 'yup';
+import {Box,Text,Input,Stack,Icon, Pressable, Button, FormControl, WarningOutlineIcon} from 'native-base';
 import AntDesign  from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { Color } from '../../constants/Colors';
@@ -78,9 +78,18 @@ const AuthScreen = () => {
 
     interface FormValues{
       email:string,
-      password:string
+      password:string,
+      confirmPassword:string,
     }
-  let initialValues: FormValues = {email: '', password: ''};
+  let initialValues: FormValues = {email: '', password: '',confirmPassword:''};
+
+  const loginValidation = Yup.object({
+    email: Yup.string()
+      .required('Email is required')
+      .email('Must be a valid Email'),
+    password: Yup.string().required('Password is required').min(6,'Password should be atleast 6 chracters'),
+    confirmPassword:Yup.string()
+  });
 
   return (
     <Box shadow={10} p={4} flex={1}>
@@ -91,101 +100,22 @@ const AuthScreen = () => {
 
         {category === 'Login' ? (
           <Box justifyContent={'space-between'}>
-           <Formik initialValues={initialValues} onSubmit={(values) => { 
-            console.log(values)
-            }}>
-              {(formikprops:any) => { 
-                return (
-                  <>
-                    <Input
-                      w={{
-                        base: '75%',
-                        md: '25%',
-                      }}
-                      my={2}
-                      InputLeftElement={
-                        <Icon
-                          as={<MaterialIcons name="person" />}
-                          size={5}
-                          ml="2"
-                          color="muted.400"
-                        />
-                      }
-                      placeholder="Email"
-                      value={formikprops.values.email}
-                      onChangeText={formikprops.handleChange('email')}
-                    />
-                    <Input
-                      w={{
-                        base: '75%',
-                        md: '25%',
-                      }}
-                      my={2}
-                      type={show ? 'text' : 'password'}
-                      InputRightElement={
-                        <Icon
-                          as={
-                            <MaterialIcons
-                              name={show ? 'visibility' : 'visibility-off'}
-                            />
-                          }
-                          size={5}
-                          mr="2"
-                          color="muted.400"
-                          onPress={() => setShow(!show)}
-                        />
-                      }
-                      InputLeftElement={
-                        <Icon
-                          as={<MaterialIcons name="lock" />}
-                          size={5}
-                          ml="2"
-                          color="muted.400"
-                          onPress={() => setShow(!show)}
-                        />
-                      }
-                      placeholder="Password"
-                      value={formikprops.values.password}
-                      onChangeText={formikprops.handleChange('password')}
-                    />
-                    <Button my={2} onPress={formikprops.handleSubmit}>LOGIN</Button>
-                  </>
-                );
-               }}
-           </Formik>
-                
-           
-            <Pressable>
-              <Box
-                h={12}
-                borderRadius={50}
-                alignItems={'center'}
-                justifyContent={'space-around'}
-                backgroundColor="red.500"
-                shadow={3}
-                flexDir="row">
-                <Icon
-                  as={<AntDesign name="google" />}
-                  size={5}
-                  ml="2"
-                  color="white"
-                />
-                <Text fontFamily={'open-sans'} color={Color.TColor}>
-                  LOGIN WITH GOOGLE
-                </Text>
-              </Box>
-            </Pressable>
-          </Box>
-        ) : (
-          <Box>
             <Formik
               initialValues={initialValues}
-              onSubmit={(): void => {
-                return;
-              }}>
-                {(formikprops) => { 
-                  return (
-                    <>
+              onSubmit={values => {
+                console.log(values);
+              }}
+              validationSchema={loginValidation}>
+              {({
+                handleChange,
+                values,
+                handleSubmit,
+                handleBlur,
+                errors,
+              }: any) => {
+                return (
+                  <>
+                    <FormControl isInvalid={'email' in errors}>
                       <Input
                         w={{
                           base: '75%',
@@ -201,9 +131,17 @@ const AuthScreen = () => {
                           />
                         }
                         placeholder="Email"
-                        value={formikprops.values.email}
-                        onChangeText={formikprops.handleChange('email')}
+                        value={values.email}
+                        onChangeText={handleChange('email')}
+                        onBlur={handleBlur('email')}
                       />
+                      <FormControl.ErrorMessage
+                        leftIcon={<WarningOutlineIcon size="xs" />}>
+                        {errors.email}
+                      </FormControl.ErrorMessage>
+                    </FormControl>
+
+                    <FormControl isInvalid={'password' in errors}>
                       <Input
                         w={{
                           base: '75%',
@@ -234,9 +172,83 @@ const AuthScreen = () => {
                           />
                         }
                         placeholder="Password"
-                        value={formikprops.values.password}
-                        onChangeText={formikprops.handleChange('password')}
+                        value={values.password}
+                        onChangeText={handleChange('password')}
+                        onBlur={handleBlur('password')}
                       />
+                      <FormControl.ErrorMessage
+                        leftIcon={<WarningOutlineIcon size="xs" />}>
+                        {errors.password}
+                      </FormControl.ErrorMessage>
+                    </FormControl>
+
+                    <Button my={2} onPress={handleSubmit}>
+                      LOGIN
+                    </Button>
+                  </>
+                );
+              }}
+            </Formik>
+
+            <Pressable>
+              <Box
+                h={12}
+                borderRadius={50}
+                alignItems={'center'}
+                justifyContent={'space-around'}
+                backgroundColor="red.500"
+                shadow={3}
+                flexDir="row">
+                <Icon
+                  as={<AntDesign name="google" />}
+                  size={5}
+                  ml="2"
+                  color="white"
+                />
+                <Text fontFamily={'open-sans'} color={Color.TColor}>
+                  LOGIN WITH GOOGLE
+                </Text>
+              </Box>
+            </Pressable>
+          </Box>
+        ) : (
+          <Box>
+            <Formik
+              initialValues={initialValues}
+              onSubmit={(): void => {
+                return;
+              }}
+              validationSchema={loginValidation}>
+              {({handleChange, values, handleSubmit, handleBlur, errors}) => {
+                return (
+                  <>
+                    <FormControl isInvalid={'email' in errors}>
+                      <Input
+                        w={{
+                          base: '75%',
+                          md: '25%',
+                        }}
+                        my={2}
+                        InputLeftElement={
+                          <Icon
+                            as={<MaterialIcons name="person" />}
+                            size={5}
+                            ml="2"
+                            color="muted.400"
+                          />
+                        }
+                        placeholder="Email"
+                        value={values.email}
+                        onChangeText={handleChange('email')}
+                        onBlur={handleBlur('email')}
+                      />
+                      <FormControl.ErrorMessage
+                        leftIcon={<WarningOutlineIcon size="xs" />}>
+                        {errors.email}
+                      </FormControl.ErrorMessage>
+                    </FormControl>
+
+                    <FormControl isInvalid={'password' in errors}>
                       <Input
                         w={{
                           base: '75%',
@@ -266,13 +278,63 @@ const AuthScreen = () => {
                             onPress={() => setShow(!show)}
                           />
                         }
-                        placeholder="Confirm Password"
+                        placeholder="Password"
+                        value={values.password}
+                        onChangeText={handleChange('password')}
+                        onBlur={handleBlur('password')}
                       />
-                      <Button my={2}>SIGNUP</Button>
-                    </>
-                  );
-                 }}
-              
+                      <FormControl.ErrorMessage
+                        leftIcon={<WarningOutlineIcon size="xs" />}>
+                        {errors.password}
+                      </FormControl.ErrorMessage>
+                    </FormControl>
+
+                    <FormControl isInvalid={values.password=== values.confirmPassword?false:true}>
+                      <Input
+                        w={{
+                          base: '75%',
+                          md: '25%',
+                        }}
+                        my={2}
+                        type={show ? 'text' : 'password'}
+                        InputRightElement={
+                          <Icon
+                            as={
+                              <MaterialIcons
+                                name={show ? 'visibility' : 'visibility-off'}
+                              />
+                            }
+                            size={5}
+                            mr="2"
+                            color="muted.400"
+                            onPress={() => setShow(!show)}
+                          />
+                        }
+                        InputLeftElement={
+                          <Icon
+                            as={<MaterialIcons name="lock" />}
+                            size={5}
+                            ml="2"
+                            color="muted.400"
+                            onPress={() => setShow(!show)}
+                          />
+                        }
+                        placeholder="Password"
+                        value={values.confirmPassword}
+                        onChangeText={handleChange('confirmPassword')}
+                        onBlur={handleBlur('confirmPassword')}
+                      />
+                      <FormControl.ErrorMessage
+                        leftIcon={<WarningOutlineIcon size="xs" />}>
+                        Both password must match
+                      </FormControl.ErrorMessage>
+                    </FormControl>
+                    <Button my={2} onPress={handleSubmit}>
+                      SIGNUP
+                    </Button>
+                  </>
+                );
+              }}
             </Formik>
           </Box>
         )}

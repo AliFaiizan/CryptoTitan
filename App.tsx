@@ -73,30 +73,7 @@ const customTheme = extendTheme(themeconfig);
 // };
 
 export default function App() {
-  // const [fontloaded, setFontloaded] = useState(false);
 
-  // //fetch fonts to use in styleSheet
-  // const fetchFont = () => {
-  //   return Font.loadAsync({
-  //     'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
-  //     'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
-  //   });
-  // };
-  // //if font is loaded the load the app
-
-  // if (!fontloaded) {
-  //   return (
-  //     <AppLoading
-  //       startAsync={fetchFont}
-  //       onFinish={() => {
-  //         setFontloaded(true);
-  //       }}
-  //       onError={() => {
-  //         setFontloaded(false);
-  //       }}
-  //     />
-  //   );
-  // }
   return (
     <NativeBaseProvider theme={customTheme}>
       <AppNavigator />
