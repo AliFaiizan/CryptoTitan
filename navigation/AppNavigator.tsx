@@ -54,11 +54,12 @@ const DashBoardNavigator=() => {
 const AppNavigator = (props: any) => {
 
   // const  isAuth= useSelector((state:any)=>!!state.auth.token)
-  // const didTryAL=useSelector((state:any) => { return state.auth.didTryAL }) 
+  //const didTryAL=useSelector((state:any) => { return state.auth.didTryAL }) 
 
   return (
     <NavigationContainer>
-      <AuthNavigator />
+      {/* <AuthNavigator /> */}
+      {true&&<DashBoardNavigator />}
     </NavigationContainer>
   );
 };
