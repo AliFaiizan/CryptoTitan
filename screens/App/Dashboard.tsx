@@ -13,7 +13,7 @@ const Dashboard = () => {
 
 export default Dashboard
 
-export const ScreenOptions: any = () => {
+export const ScreenOptions: any = ({navigation}:any) => {
   return {
     headerTitle: 'Home',
     headerTintColor:'accent.900',
@@ -38,7 +38,10 @@ export const ScreenOptions: any = () => {
         size={5}
         mr="2"
         color="accent.900"
-        onPress={() => 0}
+        onPress={() => {
+          console.log('helo')
+          
+        }}
       />
     ),
   };

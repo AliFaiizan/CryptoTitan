@@ -4,16 +4,17 @@ import { Platform } from "react-native";
 
 //Version 5 migraiton
 
-//import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-//import CustomDrawer from "../components/shop/CustomDrawer";
 import { useSelector } from "react-redux";
 
 
 import AuthScreen,{ ScreenOptions as AuthOptions}  from "../screens/User/AuthScreen"; 
 import { Color } from "../constants/Colors";
 import Dashboard ,{ScreenOptions as DashboardOptions} from "../screens/App/Dashboard";
+import CustomDrawer from "../components/CustomDrawer";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 
 //dashboard
@@ -25,7 +26,7 @@ import Dashboard ,{ScreenOptions as DashboardOptions} from "../screens/App/Dashb
 
 const daskboardStack = createNativeStackNavigator();
 //const orderStack = createNativeStackNavigator();
-//const shopDrawer = createDrawerNavigator();
+//const Drawer = createDrawerNavigator();
 const authStack= createNativeStackNavigator();
 
 
@@ -48,6 +49,27 @@ const DashBoardNavigator=() => {
        </daskboardStack.Navigator>
      );
 }
+
+// const DrawerNavigator= () => { 
+//   return (
+//     <Drawer.Navigator
+//       drawerContent={props => {
+//         return <CustomDrawer {...props} />;
+//       }}
+//       screenOptions={defaultNavigationOption}>
+//       <Drawer.Screen
+//         name="Products"
+//         component={DashBoardNavigator}
+//         options={{
+//           headerShown: false,
+//           drawerIcon: props => {
+//             return <Ionicons size={23} name="home" color={props.color} />;
+//           },
+//         }}
+//       />
+//     </Drawer.Navigator>
+//   );
+//  }
 
 
 

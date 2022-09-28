@@ -7,14 +7,13 @@
  *
  * @format
  */
-
+import 'react-native-gesture-handler';
 import React, {useState} from 'react';
 import {NativeBaseProvider, extendTheme, Input} from 'native-base';
 import AppNavigator from './navigation/AppNavigator';
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import ReduxThunk from 'redux-thunk';
 import {Provider} from 'react-redux';
-import {Color} from './constants/Colors';
 
 //reducers
 import dashboardReducer from './store/reducer/dashboard.reducer';
