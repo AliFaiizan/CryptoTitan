@@ -89,6 +89,11 @@ project.ext.vectoricons = [
 ]
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
+//react-native reanimated
+project.ext.react = [
+  enableHermes: true  // <- here | clean and rebuild if changing
+]
+
 /**
  * Set this to true to create two separate APKs instead of one:
  *   - An APK that only works on ARM devices
