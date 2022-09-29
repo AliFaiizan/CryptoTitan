@@ -39,8 +39,7 @@ export const ScreenOptions: any = ({navigation}:any) => {
         mr="2"
         color="accent.900"
         onPress={() => {
-          console.log('helo')
-          
+          navigation.openDrawer()
         }}
       />
     ),

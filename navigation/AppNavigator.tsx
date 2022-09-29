@@ -26,7 +26,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 
 const daskboardStack = createNativeStackNavigator();
 //const orderStack = createNativeStackNavigator();
-//const Drawer = createDrawerNavigator();
+const Drawer = createDrawerNavigator();
 const authStack= createNativeStackNavigator();
 
 
@@ -50,26 +50,26 @@ const DashBoardNavigator=() => {
      );
 }
 
-// const DrawerNavigator= () => { 
-//   return (
-//     <Drawer.Navigator
-//       drawerContent={props => {
-//         return <CustomDrawer {...props} />;
-//       }}
-//       screenOptions={defaultNavigationOption}>
-//       <Drawer.Screen
-//         name="Products"
-//         component={DashBoardNavigator}
-//         options={{
-//           headerShown: false,
-//           drawerIcon: props => {
-//             return <Ionicons size={23} name="home" color={props.color} />;
-//           },
-//         }}
-//       />
-//     </Drawer.Navigator>
-//   );
-//  }
+const DrawerNavigator= () => { 
+  return (
+    <Drawer.Navigator
+      drawerContent={props => {
+        return <CustomDrawer {...props} />;
+      }}
+      screenOptions={defaultNavigationOption}>
+      <Drawer.Screen
+        name="Products"
+        component={DashBoardNavigator}
+        options={{
+          headerShown: false,
+          drawerIcon: props => {
+            return <Ionicons size={23} name="home" color={props.color} />;
+          },
+        }}
+      />
+    </Drawer.Navigator>
+  );
+ }
 
 
 
@@ -81,7 +81,7 @@ const AppNavigator = (props: any) => {
   return (
     <NavigationContainer>
       {/* <AuthNavigator /> */}
-      {true&&<DashBoardNavigator />}
+      {true&&<DrawerNavigator />}
     </NavigationContainer>
   );
 };
