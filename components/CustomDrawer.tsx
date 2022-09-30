@@ -9,17 +9,12 @@ import { Box ,Text , Image, Divider} from 'native-base';
 // custom draaer component
 
 const CustomDrawer = (props: any) => {
-  const {
-    header,
-    itemList,
-    profileText,
-  } = styles;
 
   return (
     <Box flex={1}>
       <DrawerContentScrollView>
         <Box alignItems={'center'} justifyContent={'center'} h={100} >
-          <Box w={'80%'} flexDir="row" pb={2}>
+          <Box w={'90%'} flexDir="row" pb={2}>
             <Image
               source={{
                 uri: 'https://www.w3schools.com/css/img_lights.jpg',
@@ -28,7 +23,7 @@ const CustomDrawer = (props: any) => {
               size="sm"
               borderRadius={100}
             />
-            <Text style={profileText}>Faizan Ahmed</Text>
+            <Text fontWeight={'bold'} mt={2} ml={2} >Faizan Ahmed</Text>
           </Box>
         </Box>
         <Divider
@@ -40,9 +35,9 @@ const CustomDrawer = (props: any) => {
             bg: 'muted.50',
           }}
         />
-        <View style={itemList}>
+        <Box mt={1}>
           <DrawerItemList {...props} />
-        </View>
+        </Box>
       </DrawerContentScrollView>
       <Box alignItems={'center'} justifyContent={'center'} h={100}>
         <Text fontWeight={'bold'}>Follow Us On</Text>
