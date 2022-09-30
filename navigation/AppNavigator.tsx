@@ -13,8 +13,12 @@ import { useSelector } from "react-redux";
 import AuthScreen,{ ScreenOptions as AuthOptions}  from "../screens/User/AuthScreen"; 
 import { Color } from "../constants/Colors";
 import Dashboard ,{ScreenOptions as DashboardOptions} from "../screens/App/Dashboard";
+import Notification,{ScreenOptions as NotificationOptions} from "../screens/App/Notification";
 import CustomDrawer from "../components/CustomDrawer";
+
+
 import Ionicons from "react-native-vector-icons/Ionicons";
+import FontAwesome  from 'react-native-vector-icons/FontAwesome'
 
 
 //dashboard
@@ -46,6 +50,11 @@ const DashBoardNavigator=() => {
            component={Dashboard}
            options={DashboardOptions}
          />
+         <daskboardStack.Screen
+           name="Notification"
+           component={Notification}
+           options={NotificationOptions}
+         />
        </daskboardStack.Navigator>
      );
 }
@@ -58,12 +67,64 @@ const DrawerNavigator= () => {
       }}
       screenOptions={defaultNavigationOption}>
       <Drawer.Screen
-        name="Products"
+        name="Home"
         component={DashBoardNavigator}
         options={{
           headerShown: false,
           drawerIcon: props => {
             return <Ionicons size={23} name="home" color={props.color} />;
+          },
+        }}
+      />
+      <Drawer.Screen
+        name="Education"
+        component={DashBoardNavigator}
+        options={{
+          headerShown: false,
+          drawerIcon: props => {
+            return <FontAwesome size={23} name="book" color={props.color} />;
+          },
+        }}
+      />
+      <Drawer.Screen
+        name="Premium"
+        component={DashBoardNavigator}
+        options={{
+          headerShown: false,
+          drawerIcon: props => {
+            return <FontAwesome size={23} name="diamond" color={props.color} />;
+          },
+        }}
+      />
+      <Drawer.Screen
+        name="Refral"
+        component={DashBoardNavigator}
+        options={{
+          headerShown: false,
+          drawerIcon: props => {
+            return <FontAwesome size={23} name="tag" color={props.color} />;
+          },
+        }}
+      />
+
+      <Drawer.Screen
+        name="Setting"
+        component={DashBoardNavigator}
+        options={{
+          headerShown: false,
+          drawerIcon: props => {
+            return <Ionicons size={23} name="settings" color={props.color} />;
+          },
+        }}
+      />
+
+      <Drawer.Screen
+        name="Logout"
+        component={DashBoardNavigator}
+        options={{
+          headerShown: false,
+          drawerIcon: props => {
+            return <FontAwesome size={23} name="sign-out" color={props.color} />;
           },
         }}
       />

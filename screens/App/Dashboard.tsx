@@ -1,4 +1,4 @@
-import  {Box, Icon, Text} from 'native-base'
+import  {Box, Icon, Pressable, Text} from 'native-base'
 import React from 'react'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
@@ -16,32 +16,34 @@ export default Dashboard
 export const ScreenOptions: any = ({navigation}:any) => {
   return {
     headerTitle: 'Home',
-    headerTintColor:'accent.900',
+    headerTintColor: 'accent.900',
     headerTitleStyle: {
-      color:'grey',
+      color: 'grey',
       fontSize: 20,
       fontWeight: 'bold',
-      
     },
     headerRight: () => (
-      <Icon
-        as={<MaterialIcons name="notifications" />}
-        size={5}
-        mr="2"
-        color="accent.900"
-        onPress={() => 0}
-      />
+      <Pressable onPress={() => navigation.navigate('Notification')}>
+        <Icon
+          as={<MaterialIcons name="notifications" />}
+          size={5}
+          mr="2"
+          color="muted.600"
+        />
+      </Pressable>
     ),
     headerLeft: () => (
-      <Icon
-        as={<FontAwesome name="user-circle-o" />}
-        size={5}
-        mr="2"
-        color="accent.900"
+      <Pressable
         onPress={() => {
-          navigation.openDrawer()
-        }}
-      />
+          navigation.openDrawer();
+        }}>
+        <Icon
+          as={<FontAwesome name="user-circle-o" />}
+          size={5}
+          mr="2"
+          color="muted.600"
+        />
+      </Pressable>
     ),
   };
 };

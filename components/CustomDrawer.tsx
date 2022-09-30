@@ -1,60 +1,57 @@
-import {StyleSheet, Text, TextInput, View, Image} from 'react-native';
+import {StyleSheet, TextInput, View} from 'react-native';
 import React from 'react';
 import {
   DrawerContentScrollView,
   DrawerItemList,
 } from '@react-navigation/drawer';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { Box } from 'native-base';
+import { Box ,Text , Image, Divider} from 'native-base';
 // custom draaer component
 
 const CustomDrawer = (props: any) => {
   const {
-    container,
     header,
     itemList,
-    search,
-    profile,
-    image,
     profileText,
-    bottom,
   } = styles;
 
   return (
     <Box flex={1}>
       <DrawerContentScrollView>
-        <View style={header}>
-          <View style={profile}>
-        
-            <Text style={profileText}>Faizan Ahmed</Text>
-          </View>
-
-          <View style={search}>
-            <Ionicons style={{paddingLeft: 10}} name="search" size={16} />
-            <TextInput
-              style={{width: 200, marginLeft: 10, marginRight: 10}}
-              placeholder="SEARCH"
+        <Box alignItems={'center'} justifyContent={'center'} h={100} >
+          <Box w={'80%'} flexDir="row" pb={2}>
+            <Image
+              source={{
+                uri: 'https://www.w3schools.com/css/img_lights.jpg',
+              }}
+              alt="Alternate Text"
+              size="sm"
+              borderRadius={100}
             />
-          </View>
-        </View>
+            <Text style={profileText}>Faizan Ahmed</Text>
+          </Box>
+        </Box>
+        <Divider
+          my="2"
+          _light={{
+            bg: 'muted.200',
+          }}
+          _dark={{
+            bg: 'muted.50',
+          }}
+        />
         <View style={itemList}>
           <DrawerItemList {...props} />
         </View>
       </DrawerContentScrollView>
-      <View style={bottom}>
-        <Text style={{fontWeight: 'bold'}}>Follow Us On</Text>
-        <View
-          style={{
-            width: '50%',
-            flexDirection: 'row',
-            paddingTop: 10,
-            justifyContent: 'space-around',
-          }}>
-          <Ionicons name="logo-twitter" size={25} />
-          <Ionicons name="logo-instagram" size={25} />
-          <Ionicons name="logo-youtube" size={25} />
-        </View>
-      </View>
+      <Box alignItems={'center'} justifyContent={'center'} h={100}>
+        <Text fontWeight={'bold'}>Follow Us On</Text>
+        <Box w={'50%'} flexDir="row" py={5} justifyContent="space-around">
+          <Ionicons name="logo-twitter" size={23} color="black" />
+          <Ionicons name="logo-facebook" size={23} color="black" />
+          <Ionicons name="logo-youtube" size={23} color="black" />
+        </Box>
+      </Box>
     </Box>
   );
 };
