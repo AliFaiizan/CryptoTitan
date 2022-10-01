@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Platform } from "react-native";
+import { Platform, Pressable } from "react-native";
 
 //Version 5 migraiton
 
@@ -31,6 +31,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Signal from "../screens/App/Signal";
 import Defi from "../screens/App/Defi";
 import Articals from "../screens/App/Articals";
+import { Icon } from "native-base";
 
 
 
@@ -215,14 +216,38 @@ const AppNavigator = (props: any) => {
 
 const defaultNavigationOption = {
   headerStyle: {
-    backgroundColor: Platform.OS === "android" ? Color.Primary : "#fff",
+    backgroundColor: Platform.OS === 'android' ? Color.Primary : '#fff',
   },
-  headerTintColor: Platform.OS === "android" ? Color.Primary : "",
+  headerTintColor: Platform.OS === 'android' ? Color.Primary : '',
+  headerShown: false,
 };
 const tabScreenOptions = ({navigation}:any)=> {
   return {
-    headerShown: false
-  }
+    
+    headerRight: () => (
+      <Pressable onPress={() => navigation.navigate('Notification')}>
+        <Icon
+          as={<MaterialIcons name="notifications" />}
+          size={5}
+          mr="2"
+          color="muted.600"
+        />
+      </Pressable>
+    ),
+    headerLeft: () => (
+      <Pressable
+        onPress={() => {
+          navigation.openDrawer();
+        }}>
+        <Icon
+          as={<FontAwesome name="user-circle-o" />}
+          size={5}
+          mr="2"
+          color="muted.600"
+        />
+      </Pressable>
+    ),
+  };
 };
 
 

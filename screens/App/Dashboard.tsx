@@ -22,28 +22,6 @@ export const ScreenOptions: any = ({navigation}:any) => {
       fontSize: 20,
       fontWeight: 'bold',
     },
-    headerRight: () => (
-      <Pressable onPress={() => navigation.navigate('Notification')}>
-        <Icon
-          as={<MaterialIcons name="notifications" />}
-          size={5}
-          mr="2"
-          color="muted.600"
-        />
-      </Pressable>
-    ),
-    headerLeft: () => (
-      <Pressable
-        onPress={() => {
-          navigation.openDrawer();
-        }}>
-        <Icon
-          as={<FontAwesome name="user-circle-o" />}
-          size={5}
-          mr="2"
-          color="muted.600"
-        />
-      </Pressable>
-    ),
+    
   };
 };
