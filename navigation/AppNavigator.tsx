@@ -43,13 +43,23 @@ import { Icon } from "native-base";
 
 //Stack Creation
 
-const daskboardStack = createNativeStackNavigator();
+const dashboardStack = createNativeStackNavigator();
 //const orderStack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 const authStack= createNativeStackNavigator();
+const RootTab = createNativeStackNavigator();
 
 
 const Tab = createBottomTabNavigator();
+
+const RootTabNavigator=() => { 
+  return (
+    <RootTab.Navigator screenOptions={{headerShown:false}}>
+      <RootTab.Screen name="Tabs" component={BottomTabs} />
+      <RootTab.Screen name="Notification" component={Notification} options={NotificationOptions}/>
+    </RootTab.Navigator>
+  );
+ }
 
 const BottomTabs=()=> {
   return (
@@ -62,7 +72,6 @@ const BottomTabs=()=> {
           tabBarIcon: ({color, size}) => (
             <Ionicons name="home" color={color} size={size} />
           ),
-          // tabBarBadge: 0,
         }}
       />
       <Tab.Screen
@@ -73,6 +82,7 @@ const BottomTabs=()=> {
           tabBarIcon: ({color, size}) => (
             <Ionicons name="trending-up" color={color} size={size} />
           ),
+          // tabBarBadge: 1,
         }}
       />
       <Tab.Screen
@@ -111,20 +121,20 @@ const AuthNavigator =() => {
 
 const DashBoardNavigator=() => {
      return (
-       <daskboardStack.Navigator screenOptions={defaultNavigationOption}>
-         <daskboardStack.Screen
-           name="Dashboard"
-           component={Dashboard}
-           options={DashboardOptions}
-         />
-         <daskboardStack.Screen
-           name="Notification"
-           component={Notification}
-           options={NotificationOptions}
-         />
-       </daskboardStack.Navigator>
+       <dashboardStack.Navigator screenOptions={defaultNavigationOption}>
+
+            <dashboardStack.Screen
+              name="Dashboard"
+              component={Dashboard}
+              options={DashboardOptions}
+            />
+
+       
+       </dashboardStack.Navigator>
      );
 }
+
+
 
 const DrawerNavigator= () => { 
   return (
@@ -135,7 +145,7 @@ const DrawerNavigator= () => {
       screenOptions={defaultNavigationOption}>
       <Drawer.Screen
         name="Home"
-        component={BottomTabs}
+        component={RootTabNavigator}
         options={{
           headerShown: false,
           drawerIcon: props => {
@@ -201,6 +211,8 @@ const DrawerNavigator= () => {
 
 
 
+
+
 const AppNavigator = (props: any) => {
 
   // const  isAuth= useSelector((state:any)=>!!state.auth.token)
@@ -222,13 +234,14 @@ const defaultNavigationOption = {
   headerShown: false,
 };
 const tabScreenOptions = ({navigation}:any)=> {
+  console.log(navigation)
   return {
     
     headerRight: () => (
       <Pressable onPress={() => navigation.navigate('Notification')}>
         <Icon
           as={<MaterialIcons name="notifications" />}
-          size={5}
+          size={6}
           mr="2"
           color="muted.600"
         />
@@ -241,7 +254,7 @@ const tabScreenOptions = ({navigation}:any)=> {
         }}>
         <Icon
           as={<FontAwesome name="user-circle-o" />}
-          size={5}
+          size={6}
           mr="2"
           color="muted.600"
         />

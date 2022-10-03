@@ -1,13 +1,13 @@
-import  {Box, Icon, Pressable, Text} from 'native-base'
+import  {Box, VStack, Icon, Pressable, Text} from 'native-base'
 import React from 'react'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 const Dashboard = () => {
   return (
-   <Box>
+   <VStack>
    <Text>Dashboard</Text>
-   </Box>
+   </VStack>
   )
 }
 

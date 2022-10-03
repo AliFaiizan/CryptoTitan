@@ -1,14 +1,14 @@
-import {StyleSheet, Text, View} from 'react-native';
+
 import React from 'react';
-import { Icon, Pressable } from 'native-base';
+import { Icon, Pressable, VStack,Text } from 'native-base';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const Notification = () => {
   return (
-    <View>
+    <VStack>
       <Text>Notification</Text>
-    </View>
+    </VStack>
   );
 };
 
@@ -23,5 +23,6 @@ export const ScreenOptions: any = ({navigation}: any) => {
       fontSize: 20,
       fontWeight: 'bold',
     },
+    headerShown:true
   };
 };
