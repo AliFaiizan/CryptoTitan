@@ -234,7 +234,6 @@ const defaultNavigationOption = {
   headerShown: false,
 };
 const tabScreenOptions = ({navigation}:any)=> {
-  console.log(navigation)
   return {
     
     headerRight: () => (
