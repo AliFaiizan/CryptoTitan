@@ -1,6 +1,7 @@
 
 import React from 'react'
-import { Actionsheet, Badge, Box, Button, Divider, HStack, Icon, Image,Text, useDisclose, VStack } from 'native-base'
+import { Modal } from 'react-native';
+import { Badge, Box, Button, Divider, HStack, Image,Text, useDisclose, VStack } from 'native-base'
 
 const Signal = () => {
 
@@ -55,7 +56,11 @@ const Signal = () => {
           </VStack>
         </HStack>
       </Box>
-      <Box></Box>
+      <Box>
+              <Modal>
+                
+              </Modal>
+      </Box>
     </Box>
   );
 }
