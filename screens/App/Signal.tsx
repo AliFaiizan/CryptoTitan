@@ -1,11 +1,12 @@
 
-import React from 'react'
+import React, { useState } from 'react'
 import { Modal } from 'react-native';
 import { Badge, Box, Button, Divider, HStack, Image,Text, useDisclose, VStack } from 'native-base'
 
 const Signal = () => {
 
-   const {isOpen, onOpen, onClose} = useDisclose();
+
+  const [modalVisible,setModalVisible]=useState(false)
   return (
     <Box flex={1} mt={3} alignItems={'center'}>
       <Box
@@ -51,15 +52,18 @@ const Signal = () => {
               </Badge>
             </HStack>
 
-            <Button onPress={onOpen}>Targets</Button>
-           
+            <Button onPress={setModalVisible(!modalVisible)}>Targets</Button>
           </VStack>
         </HStack>
       </Box>
       <Box>
-              <Modal>
-                
-              </Modal>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            setModalVisible(!modalVisible);
+          }}></Modal>
       </Box>
     </Box>
   );
