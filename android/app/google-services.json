@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "270132099593",
+    "project_id": "cryptoboxnotification",
+    "storage_bucket": "cryptoboxnotification.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:270132099593:android:c2456dfe6e91e759aed6d8",
+        "android_client_info": {
+          "package_name": "com.cryptobox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "270132099593-06riine74e8m9j6v1dmb80oucmjjnvcd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLgDaHW55BzrUlHYRGfaLmbT0JiSHONEU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "270132099593-06riine74e8m9j6v1dmb80oucmjjnvcd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
