@@ -8,6 +8,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
 
 import { useSelector } from "react-redux";
@@ -48,6 +49,7 @@ const dashboardStack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 const authStack= createNativeStackNavigator();
 const RootTab = createNativeStackNavigator();
+const SignalTopTab = createMaterialTopTabNavigator();
 
 
 const Tab = createBottomTabNavigator();
@@ -76,7 +78,7 @@ const BottomTabs=()=> {
       />
       <Tab.Screen
         name="Signal"
-        component={Signal}
+        component={SingalTopTabs}
         options={{
           tabBarLabel: 'Signal',
           tabBarIcon: ({color, size}) => (
@@ -116,6 +118,15 @@ const AuthNavigator =() => {
     <authStack.Navigator screenOptions={defaultNavigationOption}>
       <authStack.Screen name="Auth" component={AuthScreen} options={AuthOptions} />
     </authStack.Navigator>
+  );
+}
+
+const SingalTopTabs=() => {
+  return (
+    <SignalTopTab.Navigator>
+      <SignalTopTab.Screen name="Crypto" component={Signal} />
+      <SignalTopTab.Screen name="Fx" component={Signal} />
+    </SignalTopTab.Navigator>
   );
 }
 
