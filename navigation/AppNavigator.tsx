@@ -247,18 +247,13 @@ const AppNavigator = (props: any) => {
 };
 
 const defaultNavigationOption = {
-  headerStyle: {
-    backgroundColor: Platform.OS === 'android' ? Color.Primary : '#fff',
-  },
-  headerTintColor: Platform.OS === 'android' ? Color.Primary : '',
   headerShown: false,
-
 };
 
 const drawerOptions = {
   drawerActiveTintColor: Color.BtnColor,
-  drawerStyle: {},
-  drawerType:'slide'
+  swipeEdgeWidth: 170,
+  // drawerType: 'slide',
 };
 const tabScreenOptions = ({navigation}:any)=> {
   return {  

@@ -13,8 +13,8 @@ const CustomDrawer = (props: any) => {
   return (
     <Box flex={1}>
       <DrawerContentScrollView>
-        <Box alignItems={'center'} justifyContent={'center'} h={100} >
-          <Box w={'90%'} flexDir="row" pb={2}>
+        <Box alignItems={'center'} justifyContent={'center'} h='30%' w='100%'>
+          <Box  p={3}>
             <Image
               source={{
                 uri: 'https://www.w3schools.com/css/img_lights.jpg',

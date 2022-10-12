@@ -6,7 +6,7 @@ import TargetComponent from './TargetComponent';
 import { Color } from '../constants/Colors';
 
 
-export default function SignalComponent() {
+export default function SignalComponent({imageUrl,date,title,price,isHot,entry,stop,targets,info}:any) {
 
   const actionSheetRef = useRef(null);
 
@@ -25,18 +25,30 @@ export default function SignalComponent() {
             size={16}
             resizeMode="cover"
             source={{
-              uri: 'https://wallpaperaccess.com/full/317501.jpg',
+              uri: imageUrl,
             }}
             alt={'coin Symbol'}
             borderRadius={5}
           />
-          <Text fontSize={10}>12 Sep</Text>
+          <Text fontSize={10} pt={3}>
+            {date}
+          </Text>
           <Text fontSize={10}>10 gmt5</Text>
         </VStack>
         <VStack flex={3} justifyContent={'space-between'}>
           <HStack justifyContent={'space-around'}>
-            <Text fontWeight={'bold'}>ONE/USDT</Text>
-            <Text fontWeight={'bold'}>$34.5</Text>
+            <Text fontWeight={'bold'}>{title}</Text>
+
+            {isHot && (
+              <Image
+                source={{
+                  uri: 'https://png.pngtree.com/png-clipart/20190116/ourmid/pngtree-star-cartoon-cartoon-stars-icon-png-image_381356.jpg',
+                }}
+                alt="Alternate Text"
+                size={6}
+              />
+            )}
+            <Text fontWeight={'bold'}>${price}</Text>
           </HStack>
           <Divider
             my="1"
@@ -49,10 +61,10 @@ export default function SignalComponent() {
           />
           <HStack justifyContent={'space-around'} p={3}>
             <Badge colorScheme="success" borderRadius={10}>
-              Entry 0.92 - 0.98
+              {entry}
             </Badge>
             <Badge colorScheme="danger" borderRadius={10}>
-              StopLoss 0.90
+              {stop}
             </Badge>
           </HStack>
 
@@ -75,16 +87,25 @@ export default function SignalComponent() {
             <Box mt={2} borderRadius={50} w={10} bg={'muted.400'} h={1}></Box>
             <HStack w={'100%'} justifyContent={'space-around'} p={2}>
               <Badge colorScheme="success" borderRadius={10}>
-                Entry 0.92 - 0.98
+                {entry}
               </Badge>
               <Badge colorScheme="danger" borderRadius={10}>
-                StopLoss 0.90
+                {stop}
               </Badge>
             </HStack>
             <VStack px={5}>
-              <TargetComponent index="1" price="12.5" percentage="13%" />
-              <TargetComponent index="2" price="12.5" percentage="13%" />
-              <TargetComponent index="3" price="12.5" percentage="13%" />
+              {targets.map((targetPrice: any, index: number) => {
+
+                return (
+                  <TargetComponent
+                    index={index + 1}
+                    price={targetPrice}
+                    percentage={(((targetPrice - 20) / 20) * 100).toPrecision(
+                      2,
+                    )}
+                  />
+                );
+              })}
             </VStack>
             <Divider
               alignSelf={'center'}
@@ -97,9 +118,20 @@ export default function SignalComponent() {
                 bg: 'muted.50',
               }}
             />
-            <Text fontWeight={'bold'} fontSize="xl">
-              Info
-            </Text>
+            {info && (
+              <Text fontWeight={'bold'} fontSize="xl">
+                Info
+              </Text>
+            )}
+            <Button
+              onPress={() => {
+                actionSheetRef.current?.hide();
+              }}
+              height={10}
+              width="85%"
+              backgroundColor={Color.BtnColor}>
+              Close
+            </Button>
           </Box>
         </ActionSheet>
       </Box>
