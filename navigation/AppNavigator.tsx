@@ -45,7 +45,6 @@ import { Icon } from "native-base";
 //Stack Creation
 
 const dashboardStack = createNativeStackNavigator();
-//const orderStack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 const authStack= createNativeStackNavigator();
 const RootTab = createNativeStackNavigator();
@@ -56,9 +55,17 @@ const Tab = createBottomTabNavigator();
 
 const RootTabNavigator=() => { 
   return (
-    <RootTab.Navigator screenOptions={{headerShown:false}}>
-      <RootTab.Screen name="Tabs" component={BottomTabs} />
-      <RootTab.Screen name="Notification" component={Notification} options={NotificationOptions}/>
+    <RootTab.Navigator>
+      <RootTab.Screen
+        name="Tabs"
+        component={BottomTabs}
+        options={{headerShown: false}}
+      />
+      <RootTab.Screen
+        name="Notification"
+        component={Notification}
+        options={NotificationOptions}
+      />
     </RootTab.Navigator>
   );
  }
@@ -74,6 +81,7 @@ const BottomTabs=()=> {
           tabBarIcon: ({color, size}) => (
             <Ionicons name="home" color={color} size={size} />
           ),
+          tabBarActiveTintColor: 'Color.BtnColor',
         }}
       />
       <Tab.Screen
@@ -85,6 +93,7 @@ const BottomTabs=()=> {
             <Ionicons name="trending-up" color={color} size={size} />
           ),
           // tabBarBadge: 1,
+          tabBarActiveTintColor: Color.BtnColor,
         }}
       />
       <Tab.Screen
@@ -96,6 +105,7 @@ const BottomTabs=()=> {
             <MaterialCommunityIcons name="database" color={color} size={size} />
           ),
           // tabBarBadge: 0,
+          tabBarActiveTintColor: Color.BtnColor,
         }}
       />
       <Tab.Screen
@@ -107,6 +117,7 @@ const BottomTabs=()=> {
             <MaterialIcons name="article" color={color} size={size} />
           ),
           // tabBarBadge: 0,
+          tabBarActiveTintColor: Color.BtnColor,
         }}
       />
     </Tab.Navigator>
@@ -124,7 +135,11 @@ const AuthNavigator =() => {
 const SingalTopTabs=() => {
   return (
     <SignalTopTab.Navigator>
-      <SignalTopTab.Screen name="Crypto" component={Signal} />
+      <SignalTopTab.Screen name="Crypto" component={Signal} options={{
+        tabBarIndicatorStyle:{
+          shadowColor:'black'
+        }
+      }} />
       <SignalTopTab.Screen name="Fx" component={Signal} />
     </SignalTopTab.Navigator>
   );
@@ -133,14 +148,11 @@ const SingalTopTabs=() => {
 const DashBoardNavigator=() => {
      return (
        <dashboardStack.Navigator screenOptions={defaultNavigationOption}>
-
             <dashboardStack.Screen
               name="Dashboard"
               component={Dashboard}
               options={DashboardOptions}
-            />
-
-       
+            /> 
        </dashboardStack.Navigator>
      );
 }
@@ -153,7 +165,7 @@ const DrawerNavigator= () => {
       drawerContent={props => {
         return <CustomDrawer {...props} />;
       }}
-      screenOptions={defaultNavigationOption}>
+      screenOptions={drawerOptions}>
       <Drawer.Screen
         name="Home"
         component={RootTabNavigator}
@@ -221,9 +233,6 @@ const DrawerNavigator= () => {
  }
 
 
-
-
-
 const AppNavigator = (props: any) => {
 
   // const  isAuth= useSelector((state:any)=>!!state.auth.token)
@@ -243,10 +252,17 @@ const defaultNavigationOption = {
   },
   headerTintColor: Platform.OS === 'android' ? Color.Primary : '',
   headerShown: false,
+
+};
+
+const drawerOptions = {
+  drawerActiveTintColor: Color.BtnColor,
+  drawerStyle: {},
+  drawerType:'slide'
 };
 const tabScreenOptions = ({navigation}:any)=> {
-  return {
-    
+  return {  
+    swipeEnabled:true,
     headerRight: () => (
       <Pressable onPress={() => navigation.navigate('Notification')}>
         <Icon

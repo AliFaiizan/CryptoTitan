@@ -7,20 +7,21 @@ const TargetComponent = ({index,price,percentage}:any) => {
     <Box
       borderRadius={50}
       shadow="2"
-      w={'100%'}
+      w={'85%'}
       h={30}
       m="2"
       bg={'muted.100'}
       flexDir="row"
       alignItems={'center'}
-      justifyContent={'space-around'}>
+      justifyContent={'space-around'}
+      >
       <Text fontWeight={'bold'} fontSize={17}>
         {index} .
       </Text>
       <Text fontWeight={'bold'} fontSize={17}>
         {price}
       </Text>
-      <Text fontWeight={'bold'} fontSize={17}>
+      <Text fontWeight={'bold'} fontSize={17} color={'emerald.700'}>
         {percentage}
       </Text>
     </Box>

@@ -3,6 +3,7 @@ import React, { useRef } from 'react'
 import { Badge, Box, Button, Divider, HStack, Image, Text, VStack } from 'native-base';
 import ActionSheet from 'react-native-actions-sheet';
 import TargetComponent from './TargetComponent';
+import { Color } from '../constants/Colors';
 
 
 export default function SignalComponent() {
@@ -11,7 +12,13 @@ export default function SignalComponent() {
 
 
   return (
-    <Box background={'muted.100'} w={350} h={150} borderRadius={10} shadow={5} my={1}>
+    <Box
+      background={'muted.100'}
+      w={350}
+      h={150}
+      borderRadius={10}
+      shadow={5}
+      my={1}>
       <HStack p={2} alignItems={'center'}>
         <VStack flex={1} justifyContent={'center'} alignItems={'center'}>
           <Image
@@ -49,13 +56,17 @@ export default function SignalComponent() {
             </Badge>
           </HStack>
 
-          <Button
-            onPress={() => {
-              actionSheetRef.current?.show();
-            }}
-            height={10}>
-            Targets
-          </Button>
+          <Box flexDir={'row'} justifyContent="center">
+            <Button
+              onPress={() => {
+                actionSheetRef.current?.show();
+              }}
+              height={10}
+              width="85%"
+              backgroundColor={Color.BtnColor}>
+              Targets
+            </Button>
+          </Box>
         </VStack>
       </HStack>
       <Box>
