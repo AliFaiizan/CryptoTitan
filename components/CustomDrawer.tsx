@@ -14,7 +14,7 @@ const CustomDrawer = (props: any) => {
     <Box flex={1}>
       <DrawerContentScrollView>
         <Box alignItems={'center'} justifyContent={'center'} h='30%' w='100%'>
-          <Box  p={3}>
+          <Box  p={3} justifyContent={'center'} alignItems="center">
             <Image
               source={{
                 uri: 'https://www.w3schools.com/css/img_lights.jpg',
