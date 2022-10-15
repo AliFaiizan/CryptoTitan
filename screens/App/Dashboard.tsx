@@ -6,7 +6,9 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 const Dashboard = () => {
   return (
    <VStack>
-   <Text>Dashboard</Text>
+    <Box w={'100%'} h={'30'}>
+
+    </Box>
    </VStack>
   )
 }
