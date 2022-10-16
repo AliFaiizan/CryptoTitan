@@ -1,16 +1,31 @@
-import  {Box, VStack, Icon, Pressable, Text} from 'native-base'
+import  {Box, VStack, Icon, Pressable, Text, ScrollView} from 'native-base'
 import React from 'react'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 const Dashboard = () => {
   return (
-   <VStack>
-    <Box w={'100%'} h={'30'}>
+    <ScrollView>
+      <VStack>
+        <Box w={'100%'} h={'30'} alignItems="center" justifyContent={'center'}>
+          <Text>Annoucment</Text>
+          <Text>Updates</Text>
+        </Box>
 
-    </Box>
-   </VStack>
-  )
+        <Box alignItems="center" justifyContent={'center'}>
+          <Text>Trading Rules</Text>
+        </Box>
+
+        <Box>
+          <Text>Trade pattern</Text>
+        </Box>
+
+        <Box>
+          <Text>Hall of fame</Text>
+        </Box>
+      </VStack>
+    </ScrollView>
+  );
 }
 
 export default Dashboard
