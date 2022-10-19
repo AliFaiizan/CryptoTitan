@@ -1,7 +1,8 @@
 import  {Box, VStack, Icon, Pressable, Text, ScrollView} from 'native-base'
 import React from 'react'
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
+
+
+//
 
 const Dashboard = () => {
   return (
@@ -13,11 +14,7 @@ const Dashboard = () => {
         </Box>
 
         <Box alignItems="center" justifyContent={'center'}>
-          <Text>Trading Rules</Text>
-        </Box>
-
-        <Box>
-          <Text>Trade pattern</Text>
+          <Text>Education & Trainings </Text>
         </Box>
 
         <Box>
