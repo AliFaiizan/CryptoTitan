@@ -81,7 +81,7 @@ const BottomTabs=()=> {
           tabBarIcon: ({color, size}) => (
             <Ionicons name="home" color={color} size={size} />
           ),
-          tabBarActiveTintColor: 'Color.BtnColor',
+          tabBarActiveTintColor: Color.BtnColor,
         }}
       />
       <Tab.Screen
@@ -177,16 +177,6 @@ const DrawerNavigator= () => {
         }}
       />
       <Drawer.Screen
-        name="Education"
-        component={DashBoardNavigator}
-        options={{
-          headerShown: false,
-          drawerIcon: props => {
-            return <FontAwesome size={23} name="book" color={props.color} />;
-          },
-        }}
-      />
-      <Drawer.Screen
         name="Premium"
         component={DashBoardNavigator}
         options={{
@@ -257,7 +247,6 @@ const drawerOptions = {
 };
 const tabScreenOptions = ({navigation}:any)=> {
   return {  
-    swipeEnabled:true,
     headerRight: () => (
       <Pressable onPress={() => navigation.navigate('Notification')}>
         <Icon

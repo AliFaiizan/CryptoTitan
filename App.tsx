@@ -17,10 +17,12 @@ import {Provider} from 'react-redux';
 
 //reducers
 import dashboardReducer from './store/reducer/dashboard.reducer';
+import signalsReducer from './store/reducer/signals.reducer';
 
 
 const rootReducer = combineReducers({
-  dashboard:dashboardReducer
+  dashboard:dashboardReducer,
+  signal:signalsReducer
 });
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));

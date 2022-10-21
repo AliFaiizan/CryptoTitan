@@ -36,7 +36,6 @@ export const ScreenOptions: any = ({navigation}:any) => {
       color: 'grey',
       fontSize: 20,
       fontWeight: 'bold',
-    },
-    
+    },   
   };
 };
