@@ -27,9 +27,10 @@ const Signal = () => {
       console.log(err)
     }
     }
+
    useEffect(() => {
     get()
-  }, [signals]);
+  }, [dispatch]);
 
 
   return (

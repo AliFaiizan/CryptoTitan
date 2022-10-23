@@ -5,10 +5,9 @@ export const GET_SIGNALS = "GET_SIGNALS";
 
 export const getSignals:Function = () => {
     return async (dispatch:Function) => {
-      console.log('Hello')
 
       try{
-        const response = await fetch(`http://localhost:4000/signal`);
+        const response = await fetch(`http://192.168.1.20:4000/signal`);
  
          if (!response.ok) {
             const { error } = await response.json();
