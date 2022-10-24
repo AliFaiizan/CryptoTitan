@@ -22,13 +22,13 @@ const Signal = () => {
 
     try{
       await dispatch(SignalActions.getSignals());
-
     }catch(err){
       console.log(err)
     }
     }
 
    useEffect(() => {
+    //this will get the total signal from the server
     get()
   }, [dispatch]);
 
@@ -37,7 +37,7 @@ const Signal = () => {
     <Box flex={1} mt={3} alignItems={'center'} justifyContent={'center'}>
       <Spinner color="emerald.500" />
       {
-        signals.map((item:any,index:any) => {
+        signals?signals.map((item:any,index:any) => {
           return (
             <SignalComponent
               key={index}
@@ -52,6 +52,10 @@ const Signal = () => {
             />
           );
         })
+        :
+        <Box>
+          There are no signal Available
+        </Box>
       }
     </Box>
   );
