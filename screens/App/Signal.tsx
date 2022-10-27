@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef, useState } from 'react'
 
-import {Box, Spinner} from 'native-base'
+import {Box, Spinner, Text} from 'native-base'
 import SignalComponent from '../../components/SignalComponent';
 import { useDispatch, useSelector } from 'react-redux';
 import * as SignalActions from '../../store/action/signals.action';
@@ -33,6 +33,7 @@ const Signal = () => {
   }, [dispatch]);
 
 
+
   return (
     <Box flex={1} mt={3} alignItems={'center'} justifyContent={'center'}>
       <Spinner color="emerald.500" />
@@ -54,7 +55,7 @@ const Signal = () => {
         })
         :
         <Box>
-          There are no signal Available
+          <Text fontSize={20} fontWeight={'bold'}>There are no signal Available</Text>
         </Box>
       }
     </Box>
