@@ -1,5 +1,8 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+import {LOCALIP} from '../../config'
+
+
 export const GET_SIGNALS = "GET_SIGNALS";
 
 
@@ -7,7 +10,7 @@ export const getSignals:Function = () => {
     return async (dispatch:Function) => {
 
       try{
-        const response = await fetch(`http://192.168.1.20:4000/signal`);
+        const response = await fetch(`http://${LOCALIP}:4000/signal`);
  
          if (!response.ok) {
             const { error } = await response.json();
@@ -34,8 +37,8 @@ export const getSignals:Function = () => {
 export const postSignals: Function = () => {
   return async (dispatch: Function) => {
     try {
-      const response = await fetch(`http://192.168.1.20:4000/signal`,{
-        method:'POST',
+      const response = await fetch(`http://${LOCALIP}:4000/signal`, {
+        method: 'POST',
       });
 
       if (!response.ok) {

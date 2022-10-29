@@ -19,6 +19,7 @@ const Dashboard = () => {
 
         <Box>
           <Text>Hall of fame</Text>
+          
         </Box>
       </VStack>
     </ScrollView>
