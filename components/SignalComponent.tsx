@@ -69,7 +69,13 @@ export default function SignalComponent({imageUrl,date,title,price,isHot,entry,s
           <Box flexDir={'row'} justifyContent="center">
             <Button
               onPress={() => {
-                SheetManager.show('signal');
+                SheetManager.show('signal',{
+                  payload:{
+                    entry,
+                    stop,
+                    targets
+                  }
+                });
               }}
               height={10}
               width="85%"
