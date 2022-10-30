@@ -32,7 +32,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Signal from "../screens/App/Signal";
 import Defi from "../screens/App/Defi";
 import Articals from "../screens/App/Articals";
-import { Icon } from "native-base";
+import { Icon, Image } from "native-base";
 
 
 
@@ -246,14 +246,13 @@ const drawerOptions = {
   // drawerType: 'slide',
 };
 const tabScreenOptions = ({navigation}:any)=> {
-  return {  
+  return {
     headerRight: () => (
       <Pressable onPress={() => navigation.navigate('Notification')}>
-        <Icon
-          as={<MaterialIcons name="notifications" />}
+        <Image
+          source={require('../assets/icons/notification.png')}
+          alt="Notification"
           size={6}
-          mr="2"
-          color="muted.600"
         />
       </Pressable>
     ),
@@ -262,11 +261,13 @@ const tabScreenOptions = ({navigation}:any)=> {
         onPress={() => {
           navigation.openDrawer();
         }}>
-        <Icon
-          as={<FontAwesome name="user-circle-o" />}
-          size={6}
-          mr="2"
-          color="muted.600"
+        <Image
+          size={10}
+          borderRadius={100}
+          source={{
+            uri: 'https://www.w3schools.com/css/img_lights.jpg',
+          }}
+          alt="Alternate Text"
         />
       </Pressable>
     ),

@@ -1,6 +1,7 @@
 
 import React from 'react'
 import { Box, Image, Text } from 'native-base';
+import { Color } from '../../constants/Colors';
 
 const TargetComponent = ({index,price,percentage}:any) => {
   return (
@@ -14,21 +15,19 @@ const TargetComponent = ({index,price,percentage}:any) => {
       flexDir="row"
       alignItems={'center'}
       justifyContent={'space-evenly'}>
-      <Text fontWeight={'bold'} fontSize={14}>
+      <Text fontWeight={'bold'} fontSize={14} color={'muted.500'}>
         {index} .
       </Text>
-      <Text fontWeight={'bold'} fontSize={14}>
+      <Text fontWeight={'bold'} fontSize={14} color={Color.TColor}>
         {price}
       </Text>
-      <Text fontWeight={'bold'} fontSize={14} color={'emerald.600'}>
+      <Text fontWeight={'bold'} fontSize={14} color="#54B435">
         {percentage}%
       </Text>
       <Image
-        source={{
-          uri: 'https://i.pinimg.com/originals/72/84/a2/7284a2e9b44f63a6d92139f7bb10b76e.png',
-        }}
+        source={require('../../assets/icons/upword.png')}
         alt="Alternate Text"
-        size={6}
+        size={10}
       />
     </Box>
   );

@@ -1,17 +1,18 @@
 
 import React, { useEffect, useRef, useState } from 'react'
 
-import {Box, Button, FlatList, Spinner, Text} from 'native-base'
-import SignalComponent from '../../components/SignalComponent';
+import {Box, Button, FlatList, Image, Spinner, Text, VStack} from 'native-base'
 import { useDispatch, useSelector } from 'react-redux';
 import * as SignalActions from '../../store/action/signals.action';
 
 
-import signalSheet from '../../components/signalSheet';
+import SignalComponent from '../../components/signal/SignalComponent';
+import signalSheet from '../../components/signal/signalSheet';
 import {registerSheet} from 'react-native-actions-sheet';
+import { Color } from '../../constants/Colors';
 
 
-
+// for registering sheet for using it anywhere from the mobile
 registerSheet('signal', signalSheet);
 
  
@@ -46,31 +47,50 @@ const Signal = () => {
 
 
 
-  return (   
-      <Box flex={1} mt={3} alignItems={'center'} justifyContent={'center'}>
-        {isLoading ? (
-          <Spinner color="emerald.500" size={'lg'} />
-        ) : (
-          <Box w={'95%'} m={2} flex={1}>
-            {signals.length > 0 ? (
-              <FlatList
-                px={1}
-                data={signals}
-                renderItem={renderComponent}
-                refreshing={isLoading}
-                onRefresh={get}
+  return (
+    <Box
+      flex={1}
+      pt={2}
+      alignItems={'center'}
+      justifyContent={'center'}
+      >
+      {isLoading ? (
+        <Spinner color="emerald.500" size={'lg'} />
+      ) : (
+        <Box w={'95%'} flex={1}>
+          {signals.length > 0 ? (
+            <FlatList
+              px={1}
+              data={signals}
+              renderItem={renderComponent}
+              refreshing={isLoading}
+              onRefresh={get}
+            />
+          ) : (
+            <Box flex={1} justifyContent={'center'} alignItems={'center'}>
+              <Image
+                source={require('../../assets/images/nothing.png')}
+                alt="Alternate Text"
+                size="xl"
               />
-            ) : (
-              <Box>
-                <Text fontSize={20} fontWeight={'bold'}>
-                  There are no signal Available
-                  <Button onPress={get}>Refresh</Button>
-                </Text>
-              </Box>
-            )}
-          </Box>
-        )}
-      </Box>
+
+              <Text fontSize={20} fontWeight={'bold'} m={2} color={'muted.400'}>
+                There Are No Signal Available
+              </Text>
+              <Button
+                onPress={get}
+                height={10}
+                borderWidth={2}
+                borderColor={Color.BorderColor}
+                width="85%"
+                backgroundColor={Color.BtnColor}>
+                Try Again
+              </Button>
+            </Box>
+          )}
+        </Box>
+      )}
+    </Box>
   );
 }
 

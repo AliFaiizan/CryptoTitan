@@ -1,9 +1,10 @@
 
 import React, { useRef } from 'react'
-import TargetComponent from './TargetComponent';
 import ActionSheet, { SheetManager } from 'react-native-actions-sheet';
 import { Badge, Box, Button, Divider, HStack, Text, VStack } from 'native-base';
-import { Color } from '../constants/Colors';
+import { Color } from '../../constants/Colors';
+
+import TargetComponent from './TargetComponent';
 
 export default function signalSheet({sheetId,payload}:any) {
 
@@ -16,13 +17,13 @@ export default function signalSheet({sheetId,payload}:any) {
       onBeforeShow={() => {
         console.log('sheet payload', payload?.data);
       }}
+      overlayColor="#395144"
       snapPoints={[100, 120, 150]}
       statusBarTranslucent
       drawUnderStatusBar={true}
       gestureEnabled={true}
       defaultOverlayOpacity={0.3}>
       <Box alignItems={'center'} px={3}>
-        
         <HStack w={'100%'} justifyContent={'space-around'} p={2}>
           <Badge colorScheme="success" borderRadius={10}>
             {payload?.entry}
@@ -35,6 +36,7 @@ export default function signalSheet({sheetId,payload}:any) {
           {payload.targets?.map((targetPrice: any, index: number) => {
             return (
               <TargetComponent
+                key={index}
                 index={index + 1}
                 price={targetPrice}
                 percentage={(((targetPrice - 20) / 20) * 100).toPrecision(2)}
@@ -47,7 +49,7 @@ export default function signalSheet({sheetId,payload}:any) {
           my="2"
           w={150}
           _light={{
-            bg: 'muted.400',
+            bg: Color.BorderColor,
           }}
           _dark={{
             bg: 'muted.50',
