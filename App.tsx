@@ -18,6 +18,7 @@ import {Provider} from 'react-redux';
 //reducers
 import dashboardReducer from './store/reducer/dashboard.reducer';
 import signalsReducer from './store/reducer/signals.reducer';
+import { SheetProvider } from 'react-native-actions-sheet';
 
 
 const rootReducer = combineReducers({
@@ -84,7 +85,9 @@ export default function App() {
   return (
     <Provider store={store}>
     <NativeBaseProvider theme={customTheme}>
-      <AppNavigator />
+      <SheetProvider>
+        <AppNavigator />
+      </SheetProvider>
     </NativeBaseProvider>
     </Provider>
   );
