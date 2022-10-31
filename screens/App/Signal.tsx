@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef, useState } from 'react'
-
-import {Box, Button, FlatList, Image, Spinner, Text, VStack} from 'native-base'
+import { Image } from 'react-native';
+import {Box, Button, FlatList, Spinner, Text, VStack} from 'native-base'
 import { useDispatch, useSelector } from 'react-redux';
 import * as SignalActions from '../../store/action/signals.action';
 
@@ -48,16 +48,11 @@ const Signal = () => {
 
 
   return (
-    <Box
-      flex={1}
-      pt={2}
-      alignItems={'center'}
-      justifyContent={'center'}
-      >
+    <Box flex={1} pt={2} alignItems={'center'} justifyContent={'center'}>
       {isLoading ? (
         <Spinner color="emerald.500" size={'lg'} />
       ) : (
-        <Box w={'95%'} flex={1}>
+        <Box w={'97%'} flex={1}>
           {signals.length > 0 ? (
             <FlatList
               px={1}
@@ -70,8 +65,7 @@ const Signal = () => {
             <Box flex={1} justifyContent={'center'} alignItems={'center'}>
               <Image
                 source={require('../../assets/images/nothing.png')}
-                alt="Alternate Text"
-                size="xl"
+                style={{width: 150, height: 200}}
               />
 
               <Text fontSize={20} fontWeight={'bold'} m={2} color={'muted.400'}>
@@ -79,12 +73,17 @@ const Signal = () => {
               </Text>
               <Button
                 onPress={get}
-                height={10}
+                height={12}
                 borderWidth={2}
                 borderColor={Color.BorderColor}
                 width="85%"
                 backgroundColor={Color.BtnColor}>
-                Try Again
+                <Text
+                  fontSize={15}
+                  fontWeight={'bold'}
+                  color={'muted.300'}>
+                  Try Again
+                </Text>
               </Button>
             </Box>
           )}

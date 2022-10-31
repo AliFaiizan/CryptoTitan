@@ -17,10 +17,9 @@ export default Notification;
 export const ScreenOptions: any = ({navigation}: any) => {
   return {
     headerTitle: 'Notifications',
-    headerTintColor: 'accent.900',  
+    headerTintColor: '#a5a5a5',  
     headerTitleStyle: {
-      color: 'grey',
-      fontSize: 20,
+      fontSize: 22,
       fontWeight: 'bold',
     },
   };

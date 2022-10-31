@@ -1,5 +1,6 @@
 import  {Box, VStack, Icon, Pressable, Text, ScrollView} from 'native-base'
 import React from 'react'
+import { Color } from '../../constants/Colors';
 
 
 //
@@ -32,11 +33,11 @@ export default Dashboard
 export const ScreenOptions: any = ({navigation}:any) => {
   return {
     headerTitle: 'Home',
-    headerTintColor: 'accent.900',
+    headerTintColor: 'green',
     headerTitleStyle: {
-      color: 'grey',
-      fontSize: 20,
+      color: Color.TColor,
+      fontSize: 22,
       fontWeight: 'bold',
-    },   
+    },
   };
 };

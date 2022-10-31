@@ -81,7 +81,7 @@ const BottomTabs=()=> {
           tabBarIcon: ({color, size}) => (
             <Ionicons name="home" color={color} size={size} />
           ),
-          tabBarActiveTintColor: Color.BtnColor,
+
         }}
       />
       <Tab.Screen
@@ -93,23 +93,23 @@ const BottomTabs=()=> {
             <Ionicons name="trending-up" color={color} size={size} />
           ),
           // tabBarBadge: 1,
-          tabBarActiveTintColor: Color.BtnColor,
+
         }}
       />
       <Tab.Screen
         name="Defi"
         component={Defi}
         options={{
-          tabBarLabel: 'Exchange',
+          tabBarLabel: 'Defi',
           tabBarIcon: ({color, size}) => (
             <MaterialCommunityIcons name="database" color={color} size={size} />
           ),
           // tabBarBadge: 0,
-          tabBarActiveTintColor: Color.BtnColor,
+
         }}
       />
       <Tab.Screen
-        name="Articals"
+        name="Feed"
         component={Articals}
         options={{
           tabBarLabel: 'Articals',
@@ -117,7 +117,7 @@ const BottomTabs=()=> {
             <MaterialIcons name="article" color={color} size={size} />
           ),
           // tabBarBadge: 0,
-          tabBarActiveTintColor: Color.BtnColor,
+
         }}
       />
     </Tab.Navigator>
@@ -134,16 +134,25 @@ const AuthNavigator =() => {
 
 const SingalTopTabs=() => {
   return (
-    <SignalTopTab.Navigator>
-      <SignalTopTab.Screen name="Crypto" component={Signal} options={{
-        tabBarIndicatorStyle:{
-          shadowColor:'black'
-        }
-      }} />
+    <SignalTopTab.Navigator screenOptions={TopTabOptions}>
+      <SignalTopTab.Screen
+        name="Crypto"
+        component={Signal}
+        options={{
+          
+        }}
+      />
       <SignalTopTab.Screen name="Fx" component={Signal} />
     </SignalTopTab.Navigator>
   );
 }
+const TopTabOptions = {
+  tabBarActiveTintColor: 'green',
+  tabBarIndicatorStyle: {
+    backgroundColor: Color.BorderColor,
+    borderRadius: 10,
+  },
+};
 
 const DashBoardNavigator=() => {
      return (
@@ -172,7 +181,7 @@ const DrawerNavigator= () => {
         options={{
           headerShown: false,
           drawerIcon: props => {
-            return <Ionicons size={23} name="home" color={props.color} />;
+            return <Ionicons size={22} name="home" color={props.color} />;
           },
         }}
       />
@@ -182,7 +191,9 @@ const DrawerNavigator= () => {
         options={{
           headerShown: false,
           drawerIcon: props => {
-            return <FontAwesome size={23} name="diamond" color={props.color} />;
+            return (
+              <FontAwesome size={props.size} name="star" color={props.color} />
+            );
           },
         }}
       />
@@ -192,7 +203,9 @@ const DrawerNavigator= () => {
         options={{
           headerShown: false,
           drawerIcon: props => {
-            return <FontAwesome size={23} name="tag" color={props.color} />;
+            return (
+              <FontAwesome size={props.size} name="tag" color={props.color} />
+            );
           },
         }}
       />
@@ -203,7 +216,9 @@ const DrawerNavigator= () => {
         options={{
           headerShown: false,
           drawerIcon: props => {
-            return <Ionicons size={23} name="settings" color={props.color} />;
+            return (
+              <Ionicons size={22} name="settings" color={props.color} />
+            );
           },
         }}
       />
@@ -214,7 +229,13 @@ const DrawerNavigator= () => {
         options={{
           headerShown: false,
           drawerIcon: props => {
-            return <FontAwesome size={23} name="sign-out" color={props.color} />;
+            return (
+              <FontAwesome
+                size={props.size}
+                name="sign-out"
+                color={props.color}
+              />
+            );
           },
         }}
       />
@@ -242,11 +263,14 @@ const defaultNavigationOption = {
 
 const drawerOptions = {
   drawerActiveTintColor: Color.BtnColor,
-  swipeEdgeWidth: 170,
+  drawerInactiveTintColor:Color.TColor,
+  swipeEdgeWidth: 100,
   // drawerType: 'slide',
 };
 const tabScreenOptions = ({navigation}:any)=> {
   return {
+    tabBarActiveTintColor: Color.BtnColor,
+    tabBarInactiveTintColor:Color.TColor,
     headerRight: () => (
       <Pressable onPress={() => navigation.navigate('Notification')}>
         <Image

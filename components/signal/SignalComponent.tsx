@@ -15,7 +15,8 @@ export default function SignalComponent({imageUrl,date,title,price,isHot,entry,s
       my={0}
       borderWidth={2}
       borderBottomWidth={4}
-      borderColor={Color.BorderColor}>
+      borderColor={Color.BorderColor}
+      >
       <HStack p={2} alignItems={'center'}>
         <VStack flex={1} justifyContent={'center'} alignItems={'center'}>
           <Image
@@ -83,12 +84,14 @@ export default function SignalComponent({imageUrl,date,title,price,isHot,entry,s
                   },
                 });
               }}
-              height={10}
+              height={12}
               borderWidth={2}
               borderColor={Color.BorderColor}
               width="85%"
               backgroundColor={Color.BtnColor}>
-              Targets
+              <Text fontSize={15} fontWeight={'bold'} color={'muted.300'}>
+                Targets
+              </Text>
             </Button>
           </Box>
         </VStack>
