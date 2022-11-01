@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const Articals = () => {
+const Feed = () => {
   return (
     <View>
       <Text>Articals</Text>
@@ -9,6 +9,6 @@ const Articals = () => {
   )
 }
 
-export default Articals
+export default Feed
 
 const styles = StyleSheet.create({})
