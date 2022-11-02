@@ -85,7 +85,6 @@ const Signal = () => {
                 source={require('../../assets/images/nothing.png')}
                 style={{width: 150, height: 200}}
               />
-
               <Text fontSize={20} fontWeight={'bold'} m={2} color={'muted.400'}>
                 There Are No Signal Available
               </Text>
@@ -113,7 +112,7 @@ const renderComponent=({item}:any) => {
               key={item.id}
               imageUrl={item.icon}
               date="10 Sep"
-              price={item.price}
+              price="10"
               title={`${item.name}/USDT`}
               isHot
               entry="entry 20 - 22"

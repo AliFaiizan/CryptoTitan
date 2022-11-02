@@ -1,7 +1,7 @@
 
 import React, { useRef } from 'react'
 import ActionSheet, { SheetManager } from 'react-native-actions-sheet';
-import { Badge, Box, Button, Divider, HStack, Text, VStack } from 'native-base';
+import { Badge, Box, Button, Divider, HStack, Image, Text, VStack } from 'native-base';
 import { Color } from '../../constants/Colors';
 
 import TargetComponent from './TargetComponent';
@@ -58,6 +58,7 @@ export default function signalSheet({sheetId,payload}:any) {
             Info
           </Text>
         )}
+        <Image source={require('../../assets/images/binance.png')} alt="exchange" borderRadius={10} />
         <CButton
           onPress={() => {
             SheetManager.hide('signal');
