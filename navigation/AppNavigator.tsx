@@ -33,6 +33,7 @@ import Signal from "../screens/App/Signal";
 import Defi from "../screens/App/Defi";
 import Feed from "../screens/App/Feed";
 import { Icon, Image } from "native-base";
+import Fx from "../screens/App/Fx";
 
 
 
@@ -142,7 +143,7 @@ const SingalTopTabs=() => {
           
         }}
       />
-      <SignalTopTab.Screen name="Fx" component={Signal} />
+      <SignalTopTab.Screen name="Fx" component={Fx} />
     </SignalTopTab.Navigator>
   );
 }

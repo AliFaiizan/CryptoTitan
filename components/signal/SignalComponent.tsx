@@ -3,6 +3,7 @@ import React, { useRef } from 'react'
 import { Badge, Box, Button, Divider, HStack, Image, Text, VStack } from 'native-base';
 import { Color } from '../../constants/Colors';
 import { SheetManager } from 'react-native-actions-sheet';
+import CButton from '../CButton';
 
 
 export default function SignalComponent({imageUrl,date,title,price,isHot,entry,stop,targets,info}:any) {
@@ -39,16 +40,19 @@ export default function SignalComponent({imageUrl,date,title,price,isHot,entry,s
             <Text fontWeight={'bold'} color={Color.TColor}>
               {title}
             </Text>
-            <HStack justifyContent={'center'} alignItems={'center'} space={'0.5'}>
-            <Text fontWeight={'bold'} color={Color.TColor}>
-              ${price}
-            </Text>
+            <HStack
+              justifyContent={'center'}
+              alignItems={'center'}
+              space={'0.5'}>
+              <Text fontWeight={'bold'} color={Color.TColor}>
+                ${price}
+              </Text>
               <Image
                 source={require('../../assets/icons/graph.png')}
                 alt="Alternate Text"
                 size={5}
               />
-            </HStack>            
+            </HStack>
           </HStack>
           <Divider
             h={0.5}
@@ -70,7 +74,7 @@ export default function SignalComponent({imageUrl,date,title,price,isHot,entry,s
           </HStack>
 
           <Box flexDir={'row'} justifyContent="center" mb={1}>
-            <Button
+            <CButton
               onPress={() => {
                 SheetManager.show('signal', {
                   payload: {
@@ -80,15 +84,8 @@ export default function SignalComponent({imageUrl,date,title,price,isHot,entry,s
                   },
                 });
               }}
-              height={12}
-              borderWidth={2}
-              borderColor={Color.BorderColor}
-              width="85%"
-              backgroundColor={Color.BtnColor}>
-              <Text fontSize={15} fontWeight={'bold'} color={'muted.300'}>
-                Targets
-              </Text>
-            </Button>
+              text='Targets'
+            />
           </Box>
         </VStack>
       </HStack>

@@ -5,6 +5,7 @@ import { Badge, Box, Button, Divider, HStack, Text, VStack } from 'native-base';
 import { Color } from '../../constants/Colors';
 
 import TargetComponent from './TargetComponent';
+import CButton from '../CButton';
 
 export default function signalSheet({sheetId,payload}:any) {
 
@@ -57,15 +58,12 @@ export default function signalSheet({sheetId,payload}:any) {
             Info
           </Text>
         )}
-        <Button
+        <CButton
           onPress={() => {
             SheetManager.hide('signal');
           }}
-          height={10}
-          width="85%"
-          backgroundColor={Color.BtnColor}>
-          Close
-        </Button>
+          text='Close'
+        />
       </Box>
     </ActionSheet>
   );
