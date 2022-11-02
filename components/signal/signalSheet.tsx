@@ -14,9 +14,6 @@ export default function signalSheet({sheetId,payload}:any) {
     <ActionSheet
       id={sheetId}
       ref={actionSheetRef}
-      onBeforeShow={() => {
-        console.log('sheet payload', payload?.data);
-      }}
       overlayColor="#395144"
       snapPoints={[100, 120, 150]}
       statusBarTranslucent

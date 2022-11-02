@@ -15,8 +15,7 @@ export default function SignalComponent({imageUrl,date,title,price,isHot,entry,s
       my={0}
       borderWidth={2}
       borderBottomWidth={4}
-      borderColor={Color.BorderColor}
-      >
+      borderColor={Color.BorderColor}>
       <HStack p={2} alignItems={'center'}>
         <VStack flex={1} justifyContent={'center'} alignItems={'center'}>
           <Image
@@ -28,11 +27,11 @@ export default function SignalComponent({imageUrl,date,title,price,isHot,entry,s
             alt={'coin Symbol'}
             borderRadius={5}
           />
-          <Text fontSize={10} pt={3} color={Color.TColor}>
+          <Text fontSize={15} fontWeight={'bold'} pt={3} color={Color.TColor}>
             {date}
           </Text>
           <Text fontSize={10} color={Color.TColor}>
-            10 gmt5
+            19:15
           </Text>
         </VStack>
         <VStack flex={3} justifyContent={'space-between'}>
@@ -40,19 +39,16 @@ export default function SignalComponent({imageUrl,date,title,price,isHot,entry,s
             <Text fontWeight={'bold'} color={Color.TColor}>
               {title}
             </Text>
-
-            {isHot && (
-              <Image
-                source={{
-                  uri: 'https://png.pngtree.com/png-clipart/20190116/ourmid/pngtree-star-cartoon-cartoon-stars-icon-png-image_381356.jpg',
-                }}
-                alt="Alternate Text"
-                size={6}
-              />
-            )}
+            <HStack justifyContent={'center'} alignItems={'center'} space={'0.5'}>
             <Text fontWeight={'bold'} color={Color.TColor}>
               ${price}
             </Text>
+              <Image
+                source={require('../../assets/icons/graph.png')}
+                alt="Alternate Text"
+                size={5}
+              />
+            </HStack>            
           </HStack>
           <Divider
             h={0.5}

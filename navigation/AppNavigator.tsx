@@ -31,7 +31,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import Signal from "../screens/App/Signal";
 import Defi from "../screens/App/Defi";
-import Articals from "../screens/App/Articals";
+import Feed from "../screens/App/Feed";
 import { Icon, Image } from "native-base";
 
 
@@ -110,9 +110,9 @@ const BottomTabs=()=> {
       />
       <Tab.Screen
         name="Feed"
-        component={Articals}
+        component={Feed}
         options={{
-          tabBarLabel: 'Articals',
+          tabBarLabel: 'Feed',
           tabBarIcon: ({color, size}) => (
             <MaterialIcons name="article" color={color} size={size} />
           ),
