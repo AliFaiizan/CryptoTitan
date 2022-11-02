@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef, useState } from 'react'
 import { Image } from 'react-native';
-import {Box, Button, FlatList, Spinner, Text, VStack} from 'native-base'
+import {Badge, Box, Button, FlatList, Spinner, Text, useToast, VStack} from 'native-base'
 import { useDispatch, useSelector } from 'react-redux';
 import * as SignalActions from '../../store/action/signals.action';
 
@@ -22,8 +22,12 @@ const Signal = () => {
   let dispatch = useDispatch()
 
   const [isLoading,setIsLoading]=useState(true)
+  
+  const [showListTag,setShowListTag] = useState(false)
 
-  const signals=useSelector((state:any) => { 
+  const toast=useToast()
+
+  let signals=useSelector((state:any) => { 
     return state.signal.signals
    })
   
@@ -37,14 +41,37 @@ const Signal = () => {
     }
 
     setIsLoading(false);
+
+    setTimeout(() => {
+      toast.show({
+        placement: "top",
+        duration:1000,
+        render: () => {
+          return (
+            <Box bg="#54B435" px="2" py="1" rounded="sm" mb={5}>
+              <Text>Updated</Text>
+            </Box>
+          );
+        },
+      });
+    }, 200);
     
     }
 
    useEffect(() => {
     //this will get the total signal from the server 
       get()
+      
   }, [dispatch]);
 
+
+  const showTag=() => { 
+    setShowListTag(true)
+    setTimeout(() => { 
+      setShowListTag(false)
+     },1000)
+   }
+  
 
 
   return (
@@ -53,6 +80,11 @@ const Signal = () => {
         <Spinner color="emerald.500" size={'lg'} />
       ) : (
         <Box w={'97%'} flex={1}>
+          {showListTag && (
+            <Badge colorScheme="info" borderRadius={10} mb={1} w={100} alignSelf={'center'}>
+              UPDATED
+            </Badge>
+          )}
           {signals.length > 0 ? (
             <FlatList
               px={1}
@@ -78,10 +110,7 @@ const Signal = () => {
                 borderColor={Color.BorderColor}
                 width="85%"
                 backgroundColor={Color.BtnColor}>
-                <Text
-                  fontSize={15}
-                  fontWeight={'bold'}
-                  color={'muted.300'}>
+                <Text fontSize={15} fontWeight={'bold'} color={'muted.300'}>
                   Try Again
                 </Text>
               </Button>
@@ -99,7 +128,7 @@ const renderComponent=({item}:any) => {
               imageUrl="https://icons.iconarchive.com/icons/cjdowner/cryptocurrency-flat/1024/Binance-Coin-BNB-icon.png"
               date="10 Sep"
               price={32}
-              title="BNB"
+              title="BNB/USDT"
               isHot
               entry="entry 20 - 22"
               stop="stop 18"

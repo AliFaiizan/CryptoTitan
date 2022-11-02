@@ -87,7 +87,7 @@ const BottomTabs=()=> {
       />
       <Tab.Screen
         name="Signal"
-        component={SingalTopTabs}
+        component={Signal}
         options={{
           tabBarLabel: 'Signal',
           tabBarIcon: ({color, size}) => (
@@ -133,27 +133,27 @@ const AuthNavigator =() => {
   );
 }
 
-const SingalTopTabs=() => {
-  return (
-    <SignalTopTab.Navigator screenOptions={TopTabOptions}>
-      <SignalTopTab.Screen
-        name="Crypto"
-        component={Signal}
-        options={{
+// const SingalTopTabs=() => {
+//   return (
+//     <SignalTopTab.Navigator screenOptions={TopTabOptions}>
+//       <SignalTopTab.Screen
+//         name="Crypto"
+//         component={Signal}
+//         options={{
           
-        }}
-      />
-      <SignalTopTab.Screen name="Fx" component={Fx} />
-    </SignalTopTab.Navigator>
-  );
-}
-const TopTabOptions = {
-  tabBarActiveTintColor: 'green',
-  tabBarIndicatorStyle: {
-    backgroundColor: Color.BorderColor,
-    borderRadius: 10,
-  },
-};
+//         }}
+//       />
+//       <SignalTopTab.Screen name="Fx" component={Fx} />
+//     </SignalTopTab.Navigator>
+//   );
+// }
+// const TopTabOptions = {
+//   tabBarActiveTintColor: 'green',
+//   tabBarIndicatorStyle: {
+//     backgroundColor: Color.BorderColor,
+//     borderRadius: 10,
+//   },
+// };
 
 const DashBoardNavigator=() => {
      return (

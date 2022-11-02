@@ -27,6 +27,9 @@ export const getSignals:Function = () => {
        dispatch({type:GET_SIGNALS,signals:signalArray});
 
       }catch(err){
+
+        //if there is error in feteching the signals than set the global value of signal to [] 
+        dispatch({type: GET_SIGNALS, signals: []});
         console.log('there is some error in fetching a signal',err)
       }
   };

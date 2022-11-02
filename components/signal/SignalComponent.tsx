@@ -4,6 +4,7 @@ import { Badge, Box, Button, Divider, HStack, Image, Text, VStack } from 'native
 import { Color } from '../../constants/Colors';
 import { SheetManager } from 'react-native-actions-sheet';
 import CButton from '../CButton';
+import CText from '../CText';
 
 
 export default function SignalComponent({imageUrl,date,title,price,isHot,entry,stop,targets,info}:any) {
@@ -17,6 +18,17 @@ export default function SignalComponent({imageUrl,date,title,price,isHot,entry,s
       borderWidth={2}
       borderBottomWidth={4}
       borderColor={Color.BorderColor}>
+
+      <Box position={'absolute'} ml={-1} mt={-1}>
+        <Box justifyContent={'center'} alignItems={'center'}>
+          <Image
+            size={12}
+            resizeMode="cover"
+            source={require('../../assets/images/typeCrypto.png')}
+            alt={'coin Symbol'}
+          />
+        </Box>
+      </Box>
       <HStack p={2} alignItems={'center'}>
         <VStack flex={1} justifyContent={'center'} alignItems={'center'}>
           <Image
@@ -28,7 +40,7 @@ export default function SignalComponent({imageUrl,date,title,price,isHot,entry,s
             alt={'coin Symbol'}
             borderRadius={5}
           />
-          <Text fontSize={15} fontWeight={'bold'} pt={3} color={Color.TColor}>
+          <Text fontSize={15} fontWeight={'bold'} pt={2} color={Color.TColor}>
             {date}
           </Text>
           <Text fontSize={10} color={Color.TColor}>
@@ -84,7 +96,7 @@ export default function SignalComponent({imageUrl,date,title,price,isHot,entry,s
                   },
                 });
               }}
-              text='Targets'
+              text="Targets"
             />
           </Box>
         </VStack>
