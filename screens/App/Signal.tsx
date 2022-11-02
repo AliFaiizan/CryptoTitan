@@ -22,8 +22,6 @@ const Signal = () => {
   let dispatch = useDispatch()
 
   const [isLoading,setIsLoading]=useState(true)
-  
-  const [showListTag,setShowListTag] = useState(false)
 
   const toast=useToast()
 
@@ -65,26 +63,12 @@ const Signal = () => {
   }, [dispatch]);
 
 
-  const showTag=() => { 
-    setShowListTag(true)
-    setTimeout(() => { 
-      setShowListTag(false)
-     },1000)
-   }
-  
-
-
   return (
     <Box flex={1} pt={2} alignItems={'center'} justifyContent={'center'}>
       {isLoading ? (
         <Spinner color="emerald.500" size={'lg'} />
       ) : (
-        <Box w={'97%'} flex={1}>
-          {showListTag && (
-            <Badge colorScheme="info" borderRadius={10} mb={1} w={100} alignSelf={'center'}>
-              UPDATED
-            </Badge>
-          )}
+        <Box w={'97%'} flex={1}>          
           {signals.length > 0 ? (
             <FlatList
               px={1}
