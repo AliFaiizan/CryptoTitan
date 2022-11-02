@@ -34,16 +34,12 @@ const Signal = () => {
     setIsLoading(true);
     try{
       await dispatch(SignalActions.getSignals());
-    }catch(err){
-      console.log(err)
-    }
 
-    setIsLoading(false);
-
-    setTimeout(() => {
+      setIsLoading(false);      
+      
       toast.show({
-        placement: "top",
-        duration:1000,
+        placement: 'top',
+        duration: 1000,
         render: () => {
           return (
             <Box bg="#54B435" px="2" py="1" rounded="sm" mb={5}>
@@ -52,7 +48,13 @@ const Signal = () => {
           );
         },
       });
-    }, 200);
+    }catch(err){
+      console.log(err)
+    }
+
+    
+
+   
     
     }
 
@@ -109,10 +111,10 @@ const Signal = () => {
 const renderComponent=({item}:any) => {
   return <SignalComponent
               key={item.id}
-              imageUrl="https://icons.iconarchive.com/icons/cjdowner/cryptocurrency-flat/1024/Binance-Coin-BNB-icon.png"
+              imageUrl={item.icon}
               date="10 Sep"
-              price={32}
-              title="BNB/USDT"
+              price={item.price}
+              title={`${item.name}/USDT`}
               isHot
               entry="entry 20 - 22"
               stop="stop 18"
