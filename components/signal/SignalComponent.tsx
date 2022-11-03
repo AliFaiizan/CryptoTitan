@@ -14,7 +14,7 @@ export default function SignalComponent({imageUrl,date,title,price,isHot,entry,s
       background={'white'}
       m={1}
       borderRadius={10}
-      my={0}
+      my={1}
       borderWidth={2}
       borderBottomWidth={4}
       borderColor={Color.BorderColor}>
