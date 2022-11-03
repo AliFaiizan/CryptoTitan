@@ -5,7 +5,6 @@ import { Color } from '../../constants/Colors';
 import { SheetManager } from 'react-native-actions-sheet';
 import CButton from '../CButton';
 import CText from '../CText';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 export default function SignalComponent({imageUrl,date,title,price,isHot,entry,stop,targets,info}:any) {
@@ -76,13 +75,11 @@ export default function SignalComponent({imageUrl,date,title,price,isHot,entry,s
               bg: 'muted.50',
             }}
           />
-          {true ? (
+          {false? (
             <Box
-              bg={'muted.400'}
-              borderRadius={10}
-              h={20}
-              alignItems={'center'}>
-              <Icon as={Ionicons} name="lock-closed" size="20" color="red" />
+              alignItems={'center'}
+              justifyContent={'center'}>
+                <CButton mt={5} text="ONLY PREMIUM" buttonColor={'#a3a3a3'} />
             </Box>
           ) : (
             <>

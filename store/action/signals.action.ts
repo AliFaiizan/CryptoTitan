@@ -28,7 +28,7 @@ export const getSignals:Function = () => {
 
       }catch(err){
 
-        //if there is error in feteching the signals than set the global value of signal to [] 
+        //if there is error in feteching the signals than set the global value of signal to [] so it shows main encampment
         dispatch({type: GET_SIGNALS, signals: []});
         console.log('there is some error in fetching a signal',err)
       }
