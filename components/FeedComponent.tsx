@@ -10,7 +10,8 @@ const FeedComponent = () => {
       borderRadius={10}
       borderWidth={2}
       borderColor={Color.BorderColor}
-      w={'100%'}>
+      w={'100%'}
+      backgroundColor='white'>
       <Box  borderRadius={10}>
         <Image
           source={{

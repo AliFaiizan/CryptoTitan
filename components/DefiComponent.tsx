@@ -11,4 +11,3 @@ const DefiComponent = () => {
 
 export default DefiComponent
 
-const styles = StyleSheet.create({})
