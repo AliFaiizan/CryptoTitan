@@ -1,11 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Box } from 'native-base'
 import React from 'react'
 
 const DefiComponent = () => {
   return (
-    <View>
-      <Text>DefiComponent</Text>
-    </View>
+    <Box
+     w={'100%'}
+     height={50}
+    >
+
+    </Box>
   )
 }
 
