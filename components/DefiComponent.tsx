@@ -1,4 +1,4 @@
-import { Box } from 'native-base'
+import { Box, Text } from 'native-base'
 import React from 'react'
 
 const DefiComponent = () => {
@@ -7,7 +7,7 @@ const DefiComponent = () => {
      w={'100%'}
      height={50}
     >
-
+          <Text>Defi Component</Text>
     </Box>
   )
 }
